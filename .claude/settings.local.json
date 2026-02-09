@@ -4,7 +4,11 @@
       "Bash(git init:*)",
       "Bash(git remote add:*)",
       "Bash(git add:*)",
-      "Bash(git commit -m \"$\\(cat <<''EOF''\nCommit inicial - Sistema de Pedidos\n\n- Formulário de pedidos com informações do cliente\n- Tabela de produtos com cálculos automáticos\n- Suporte a modo claro/escuro\n- Layout otimizado para impressão\n- Cálculo automático de Qtd. Und. e preços\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nCommit inicial - Sistema de Pedidos\n\n- Formulário de pedidos com informações do cliente\n- Tabela de produtos com cálculos automáticos\n- Suporte a modo claro/escuro\n- Layout otimizado para impressão\n- Cálculo automático de Qtd. Und. e preços\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(git mv:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nRenomear main.html para index.html\n\nPermite acesso direto via GitHub Pages sem especificar o arquivo\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
     ]
   }
 }

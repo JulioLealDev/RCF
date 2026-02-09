@@ -1,0 +1,46 @@
+{
+  "empresas": [
+    {
+      "id": 1,
+      "razaoSocial": "Empresa Exemplo LTDA",
+      "cnpj": "12.345.678/0001-90",
+      "inscricaoEstadual": "123.456.789.012",
+      "endereco": "Rua das Flores, 123",
+      "bairro": "Centro",
+      "cep": "30130-000",
+      "cidade": "Belo Horizonte",
+      "uf": "MG",
+      "telefone": "(31) 99999-9999",
+      "email": "contato@empresaexemplo.com.br",
+      "comprador": "João Silva"
+    },
+    {
+      "id": 2,
+      "razaoSocial": "Comércio ABC S/A",
+      "cnpj": "98.765.432/0001-10",
+      "inscricaoEstadual": "987.654.321.098",
+      "endereco": "Av. Brasil, 456",
+      "bairro": "Industrial",
+      "cep": "31270-000",
+      "cidade": "Belo Horizonte",
+      "uf": "MG",
+      "telefone": "(31) 98888-8888",
+      "email": "compras@comercioabc.com.br",
+      "comprador": "Maria Santos"
+    },
+    {
+      "id": 3,
+      "razaoSocial": "Distribuidora XYZ LTDA",
+      "cnpj": "11.222.333/0001-44",
+      "inscricaoEstadual": "111.222.333.444",
+      "endereco": "Rua do Comércio, 789",
+      "bairro": "Santa Efigênia",
+      "cep": "30150-100",
+      "cidade": "Belo Horizonte",
+      "uf": "MG",
+      "telefone": "(31) 97777-7777",
+      "email": "pedidos@distribuidoraxyz.com.br",
+      "comprador": "Carlos Oliveira"
+    }
+  ]
+}

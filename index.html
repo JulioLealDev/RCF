@@ -257,6 +257,21 @@
       color: #cbd5e1;
     }
 
+    /* Campos desativados */
+    .form-group input:disabled,
+    .form-group select:disabled {
+      background: #f1f5f9;
+      color: #94a3b8;
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    [data-theme="dark"] .form-group input:disabled,
+    [data-theme="dark"] .form-group select:disabled {
+      background: #334155;
+      color: #64748b;
+    }
+
     /* Tabela compacta para impressão - oculta na tela */
     .print-info-table {
       display: none;
@@ -1070,88 +1085,102 @@
         </div>
       </div>
 
-      <div class="form-grid form-grid-2" style="margin-bottom: 16px;">
+      <!-- Seleção de Empresa -->
+      <div class="form-grid" style="margin-bottom: 16px;">
         <div class="form-group">
-          <label>Razão Social</label>
-          <input id="razaoSocial" type="text" placeholder="Razão social da empresa" />
-        </div>
-        <div class="form-group">
-          <label>Fornecedor</label>
-          <input id="fornecedor" type="text" placeholder="Nome do fornecedor" />
-        </div>
-      </div>
-
-      <div class="form-grid form-grid-4" style="margin-bottom: 16px;">
-        <div class="form-group span-2">
-          <label>Endereço</label>
-          <input id="endereco" type="text" placeholder="Endereço completo" />
-        </div>
-        <div class="form-group">
-          <label>CEP</label>
-          <input id="cep" type="text" placeholder="00000-000" maxlength="9" />
-        </div>
-        <div class="form-group">
-          <label>Bairro</label>
-          <input id="bairro" type="text" placeholder="Bairro" />
-        </div>
-      </div>
-
-      <div class="form-grid form-grid-4" style="margin-bottom: 16px;">
-        <div class="form-group">
-          <label>Telefone</label>
-          <input id="telefone" type="text" placeholder="(00) 00000-0000" maxlength="15" />
-        </div>
-        <div class="form-group">
-          <label>Email</label>
-          <input id="email" type="email" placeholder="email@exemplo.com" />
-        </div>
-        <div class="form-group">
-          <label>Cidade</label>
-          <input id="cidade" type="text" placeholder="Cidade" />
-        </div>
-        <div class="form-group">
-          <label>UF</label>
-          <select id="uf">
-            <option value="">-</option>
-            <option value="AC">AC</option>
-            <option value="AL">AL</option>
-            <option value="AP">AP</option>
-            <option value="AM">AM</option>
-            <option value="BA">BA</option>
-            <option value="CE">CE</option>
-            <option value="DF">DF</option>
-            <option value="ES">ES</option>
-            <option value="GO">GO</option>
-            <option value="MA">MA</option>
-            <option value="MT">MT</option>
-            <option value="MS">MS</option>
-            <option value="MG">MG</option>
-            <option value="PA">PA</option>
-            <option value="PB">PB</option>
-            <option value="PR">PR</option>
-            <option value="PE">PE</option>
-            <option value="PI">PI</option>
-            <option value="RJ">RJ</option>
-            <option value="RN">RN</option>
-            <option value="RS">RS</option>
-            <option value="RO">RO</option>
-            <option value="RR">RR</option>
-            <option value="SC">SC</option>
-            <option value="SP">SP</option>
-            <option value="SE">SE</option>
-            <option value="TO">TO</option>
+          <label>Selecionar Empresa</label>
+          <select id="selectEmpresa">
+            <option value="">-- Selecione uma empresa --</option>
+            <option value="outra">+ Outra Empresa (preencher manualmente)</option>
           </select>
         </div>
       </div>
 
-      <div class="form-grid form-grid-2">
-        <div class="form-group">
-          <label>CNPJ</label>
-          <input id="cnpj" type="text" placeholder="00.000.000/0000-00" maxlength="18" />
+      <!-- Campos da empresa (desativados por padrão) -->
+      <div id="camposEmpresa">
+        <div class="form-grid form-grid-2" style="margin-bottom: 16px;">
+          <div class="form-group">
+            <label>Razão Social</label>
+            <input id="razaoSocial" type="text" placeholder="Razão social da empresa" class="campo-empresa" disabled />
+          </div>
+          <div class="form-group">
+            <label>Fornecedor</label>
+            <input id="fornecedor" type="text" placeholder="Nome do fornecedor" class="campo-empresa" disabled />
+          </div>
         </div>
-        <div class="form-group">
-          <label>Inscrição Estadual</label>
-          <input id="inscEst" type="text" placeholder="Inscrição estadual" />
+
+        <div class="form-grid form-grid-4" style="margin-bottom: 16px;">
+          <div class="form-group span-2">
+            <label>Endereço</label>
+            <input id="endereco" type="text" placeholder="Endereço completo" class="campo-empresa" disabled />
+          </div>
+          <div class="form-group">
+            <label>CEP</label>
+            <input id="cep" type="text" placeholder="00000-000" maxlength="9" class="campo-empresa" disabled />
+          </div>
+          <div class="form-group">
+            <label>Bairro</label>
+            <input id="bairro" type="text" placeholder="Bairro" class="campo-empresa" disabled />
+          </div>
+        </div>
+
+        <div class="form-grid form-grid-4" style="margin-bottom: 16px;">
+          <div class="form-group">
+            <label>Telefone</label>
+            <input id="telefone" type="text" placeholder="(00) 00000-0000" maxlength="15" class="campo-empresa" disabled />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input id="email" type="email" placeholder="email@exemplo.com" class="campo-empresa" disabled />
+          </div>
+          <div class="form-group">
+            <label>Cidade</label>
+            <input id="cidade" type="text" placeholder="Cidade" class="campo-empresa" disabled />
+          </div>
+          <div class="form-group">
+            <label>UF</label>
+            <select id="uf" class="campo-empresa" disabled>
+              <option value="">-</option>
+              <option value="AC">AC</option>
+              <option value="AL">AL</option>
+              <option value="AP">AP</option>
+              <option value="AM">AM</option>
+              <option value="BA">BA</option>
+              <option value="CE">CE</option>
+              <option value="DF">DF</option>
+              <option value="ES">ES</option>
+              <option value="GO">GO</option>
+              <option value="MA">MA</option>
+              <option value="MT">MT</option>
+              <option value="MS">MS</option>
+              <option value="MG">MG</option>
+              <option value="PA">PA</option>
+              <option value="PB">PB</option>
+              <option value="PR">PR</option>
+              <option value="PE">PE</option>
+              <option value="PI">PI</option>
+              <option value="RJ">RJ</option>
+              <option value="RN">RN</option>
+              <option value="RS">RS</option>
+              <option value="RO">RO</option>
+              <option value="RR">RR</option>
+              <option value="SC">SC</option>
+              <option value="SP">SP</option>
+              <option value="SE">SE</option>
+              <option value="TO">TO</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid form-grid-2">
+          <div class="form-group">
+            <label>CNPJ</label>
+            <input id="cnpj" type="text" placeholder="00.000.000/0000-00" maxlength="18" class="campo-empresa" disabled />
+          </div>
+          <div class="form-group">
+            <label>Inscrição Estadual</label>
+            <input id="inscEst" type="text" placeholder="Inscrição estadual" class="campo-empresa" disabled />
+          </div>
         </div>
       </div>
 
@@ -1585,6 +1614,93 @@
         localStorage.setItem('theme', 'dark');
       }
     });
+
+    // ===== SISTEMA DE SELEÇÃO DE EMPRESAS =====
+    let empresasData = [];
+    const selectEmpresa = document.getElementById('selectEmpresa');
+    const camposEmpresa = document.querySelectorAll('.campo-empresa');
+
+    // Carrega empresas do JSON
+    async function carregarEmpresas() {
+      try {
+        const response = await fetch('data/empresas.json');
+        const data = await response.json();
+        empresasData = data.empresas;
+
+        // Popula o dropdown com as empresas
+        empresasData.forEach(empresa => {
+          const option = document.createElement('option');
+          option.value = empresa.id;
+          option.textContent = empresa.razaoSocial;
+          // Insere antes da opção "Outra Empresa"
+          selectEmpresa.insertBefore(option, selectEmpresa.querySelector('option[value="outra"]'));
+        });
+      } catch (error) {
+        console.error('Erro ao carregar empresas:', error);
+      }
+    }
+
+    // Preenche os campos com dados da empresa selecionada
+    function preencherCamposEmpresa(empresa) {
+      document.getElementById('razaoSocial').value = empresa.razaoSocial || '';
+      document.getElementById('cnpj').value = empresa.cnpj || '';
+      document.getElementById('inscEst').value = empresa.inscricaoEstadual || '';
+      document.getElementById('endereco').value = empresa.endereco || '';
+      document.getElementById('bairro').value = empresa.bairro || '';
+      document.getElementById('cep').value = empresa.cep || '';
+      document.getElementById('cidade').value = empresa.cidade || '';
+      document.getElementById('uf').value = empresa.uf || '';
+      document.getElementById('telefone').value = empresa.telefone || '';
+      document.getElementById('email').value = empresa.email || '';
+      document.getElementById('fornecedor').value = '';
+    }
+
+    // Limpa os campos da empresa
+    function limparCamposEmpresa() {
+      document.getElementById('razaoSocial').value = '';
+      document.getElementById('cnpj').value = '';
+      document.getElementById('inscEst').value = '';
+      document.getElementById('endereco').value = '';
+      document.getElementById('bairro').value = '';
+      document.getElementById('cep').value = '';
+      document.getElementById('cidade').value = '';
+      document.getElementById('uf').value = '';
+      document.getElementById('telefone').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('fornecedor').value = '';
+    }
+
+    // Ativa ou desativa os campos da empresa
+    function toggleCamposEmpresa(ativar) {
+      camposEmpresa.forEach(campo => {
+        campo.disabled = !ativar;
+      });
+    }
+
+    // Event listener para seleção de empresa
+    selectEmpresa.addEventListener('change', () => {
+      const valor = selectEmpresa.value;
+
+      if (valor === '') {
+        // Nenhuma empresa selecionada - campos desativados e vazios
+        limparCamposEmpresa();
+        toggleCamposEmpresa(false);
+      } else if (valor === 'outra') {
+        // Outra empresa - ativa campos para preenchimento manual
+        limparCamposEmpresa();
+        toggleCamposEmpresa(true);
+      } else {
+        // Empresa selecionada - preenche e desativa campos
+        const empresa = empresasData.find(e => e.id == valor);
+        if (empresa) {
+          preencherCamposEmpresa(empresa);
+          toggleCamposEmpresa(false);
+        }
+      }
+    });
+
+    // Carrega as empresas ao iniciar
+    carregarEmpresas();
   </script>
 </body>
 </html>
