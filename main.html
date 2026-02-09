@@ -1,0 +1,1590 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pedido - Template</title>
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --success: #10b981;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --input-bg: #ffffff;
+      --table-header: #f8fafc;
+      --table-hover: #f8fafc;
+      --total-bg: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.05);
+      --shadow-lg: 0 4px 20px rgba(0,0,0,0.1);
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    /* Modo Escuro */
+    [data-theme="dark"] {
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --bg: #0f172a;
+      --card: #1e293b;
+      --border: #334155;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --input-bg: #0f172a;
+      --table-header: #334155;
+      --table-hover: #334155;
+      --total-bg: linear-gradient(135deg, #334155, #1e293b);
+      --shadow: 0 1px 3px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    [data-theme="dark"] .btn-secondary {
+      background: var(--card);
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    [data-theme="dark"] .btn-danger {
+      background: rgba(239, 68, 68, 0.15);
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+
+    [data-theme="dark"] .products-table input[readonly] {
+      background: var(--border);
+    }
+
+    [data-theme="dark"] .btn-remove {
+      color: var(--text-muted);
+    }
+
+    [data-theme="dark"] .btn-remove:hover {
+      background: rgba(239, 68, 68, 0.2);
+      color: var(--danger);
+    }
+
+    /* Modo escuro - placeholders e texto dos inputs */
+    [data-theme="dark"] .form-group input::placeholder,
+    [data-theme="dark"] .products-table input::placeholder {
+      color: #64748b !important;
+    }
+
+    [data-theme="dark"] .form-group input,
+    [data-theme="dark"] .form-group select,
+    [data-theme="dark"] .products-table input,
+    [data-theme="dark"] .products-table select {
+      color: #f1f5f9 !important;
+    }
+
+    [data-theme="dark"] .form-group select option,
+    [data-theme="dark"] .products-table select option {
+      background: var(--card);
+      color: #f1f5f9;
+    }
+
+    /* Corrigir autocomplete no modo escuro */
+    [data-theme="dark"] input:-webkit-autofill,
+    [data-theme="dark"] input:-webkit-autofill:hover,
+    [data-theme="dark"] input:-webkit-autofill:focus,
+    [data-theme="dark"] input:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 30px #1e293b inset !important;
+      -webkit-text-fill-color: #f1f5f9 !important;
+      caret-color: #f1f5f9 !important;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    /* Container principal */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 24px 16px;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Header da empresa - 3 colunas */
+    .company-header {
+      display: grid;
+      grid-template-columns: 20% 60% 20%;
+      align-items: center;
+    }
+
+    .logo-box {
+      width: 100%;
+      max-width: 140px;
+      height: 80px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      overflow: hidden;
+    }
+
+    .logo-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .company-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      text-align: center;
+    }
+
+    .company-details {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .company-details span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Área de botões do cabeçalho */
+    .header-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Grid de formulário */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .form-grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .form-grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .form-grid-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .span-2 { grid-column: span 2; }
+    .span-3 { grid-column: span 3; }
+
+    /* Campos de formulário */
+    .form-group {
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      color: var(--text);
+      background: var(--input-bg);
+      transition: all 0.2s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .form-group input::placeholder {
+      color: #cbd5e1;
+    }
+
+    /* Tabela compacta para impressão - oculta na tela */
+    .print-info-table {
+      display: none;
+    }
+
+    /* Tabela de produtos moderna */
+    .products-table-wrap {
+      overflow-x: auto;
+      margin: 0 -24px;
+      padding: 0 24px;
+    }
+
+    .products-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 13px;
+    }
+
+    .products-table thead th {
+      background: var(--table-header);
+      padding: 12px 10px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      border-bottom: 2px solid var(--border);
+      white-space: nowrap;
+    }
+
+    .products-table tbody tr {
+      transition: background 0.15s ease;
+    }
+
+    .products-table tbody tr:hover {
+      background: var(--table-hover);
+    }
+
+    .products-table tbody td {
+      padding: 8px 3px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    .products-table input,
+    .products-table select {
+      width: 100%;
+      padding: 10px 8px;
+      border: 1.5px solid transparent;
+      border-radius: 6px;
+      font-size: 13px;
+      background: transparent;
+      transition: all 0.2s ease;
+      color: var(--text);
+    }
+
+    .products-table input:focus:not([readonly]),
+    .products-table select:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: var(--input-bg);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .products-table input:hover:not(:focus):not([readonly]),
+    .products-table select:hover:not(:focus) {
+      background: var(--input-bg);
+      border-color: var(--border);
+      cursor: pointer;
+    }
+
+    .products-table input[readonly] {
+      cursor: default;
+      outline: none;
+      pointer-events: none;
+    }
+
+    .products-table .col-item { width: 45px; text-align: center; }
+    .products-table .col-und { width: 80px; text-align: center; }
+    .products-table .col-ref { width: 65px; text-align: center; }
+    .products-table .col-qtde { width: 65px; text-align: right; }
+    .products-table .col-qtde-conj { width: 65px; text-align: right; }
+    .products-table .col-desc { min-width: 150px; }
+    .products-table .col-pr { width: 70px; text-align: right; }
+    .products-table .col-pr-conj { width: 70px; text-align: right; }
+    .products-table .col-total { width: 90px; text-align: right; }
+    .products-table .col-action { width: 44px; text-align: center; }
+
+    .products-table input.text-center { text-align: center; }
+    .products-table input.text-right { text-align: right; }
+
+    .products-table input[readonly] {
+      background: #f1f5f9;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* Botões */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+    }
+
+    .btn-danger {
+      background: #fef2f2;
+      color: var(--danger);
+      border: 1.5px solid #fecaca;
+    }
+
+    .btn-danger:hover {
+      background: #fee2e2;
+    }
+
+    .btn-icon {
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      border-radius: 8px;
+    }
+
+    .btn-remove {
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      font-size: 18px;
+    }
+
+    .btn-remove:hover {
+      background: #fee2e2;
+      color: var(--danger);
+    }
+
+    /* Botões do cabeçalho */
+    .btn-header {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-header:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+
+    .btn-header .icon {
+      font-size: 14px;
+    }
+
+    /* Botão de tema */
+    .btn-theme {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      background: var(--card);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .btn-theme:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .btn-theme:hover .theme-icon {
+      color: white;
+    }
+
+    .theme-icon {
+      font-size: 18px;
+      color: var(--text);
+      transition: all 0.3s ease;
+    }
+
+    /* Total */
+    .total-bar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      margin: 0 -24px -24px;
+      background: var(--total-bg);
+      border-radius: 0 0 var(--radius) var(--radius);
+      border-top: 1px solid var(--border);
+    }
+
+    .total-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .total-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    /* Seção de entrega */
+    .delivery-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 16px;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 16px;
+    }
+
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .radio-option input[type="radio"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    .radio-option span {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    /* Actions bar */
+    .actions-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .actions-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .company-header {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        text-align: center;
+      }
+
+      .logo-box {
+        margin: 0 auto;
+        justify-content: center;
+      }
+
+      .header-actions {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .form-grid-2,
+      .form-grid-3,
+      .form-grid-4 {
+        grid-template-columns: 1fr;
+      }
+
+      .span-2, .span-3 {
+        grid-column: span 1;
+      }
+
+      .delivery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .actions-bar {
+        flex-direction: column;
+      }
+
+      .actions-group {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .total-bar {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    /* Impressão - Forçar 1 página */
+    @media print {
+      @page {
+        size: A4;
+        margin: 8mm;
+      }
+
+      /* Forçar cores do modo claro na impressão */
+      :root, [data-theme="dark"] {
+        --primary: #2563eb !important;
+        --primary-dark: #1d4ed8 !important;
+        --bg: #ffffff !important;
+        --card: #ffffff !important;
+        --border: #e2e8f0 !important;
+        --text: #1e293b !important;
+        --text-muted: #64748b !important;
+        --input-bg: #ffffff !important;
+        --table-header: #f8fafc !important;
+        --table-hover: #f8fafc !important;
+      }
+
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background: white !important;
+        color: #1e293b !important;
+        font-size: 9px;
+        line-height: 1.2;
+      }
+
+      .card {
+        background: white !important;
+        color: #1e293b !important;
+      }
+
+      /* Forçar todas as cores de texto para preto na impressão */
+      .card-title,
+      .form-group label,
+      .form-group input,
+      .products-table input,
+      .products-table th,
+      .products-table td,
+      .total-label,
+      .total-value,
+      .delivery-grid label,
+      .delivery-grid input,
+      .radio-option span,
+      input,
+      span {
+        color: #1e293b !important;
+      }
+
+      /* Sobrescrever estilos do modo escuro na impressão */
+      [data-theme="dark"] .form-group input,
+      [data-theme="dark"] .products-table input,
+      [data-theme="dark"] .products-table select,
+      [data-theme="dark"] .products-table th,
+      [data-theme="dark"] .products-table td,
+      [data-theme="dark"] .card-title,
+      [data-theme="dark"] .total-label,
+      [data-theme="dark"] .total-value,
+      [data-theme="dark"] .total-value span,
+      [data-theme="dark"] .delivery-grid input,
+      [data-theme="dark"] .delivery-grid label,
+      [data-theme="dark"] .radio-option span,
+      [data-theme="dark"] .company-details,
+      [data-theme="dark"] .form-group label,
+      [data-theme="dark"] span,
+      [data-theme="dark"] input,
+      [data-theme="dark"] select {
+        color: #1e293b !important;
+      }
+
+      [data-theme="dark"] .card,
+      [data-theme="dark"] .products-table input,
+      [data-theme="dark"] .form-group input,
+      [data-theme="dark"] .delivery-grid input {
+        background: white !important;
+        background-color: white !important;
+      }
+
+      .company-details,
+      .form-group label {
+        color: #64748b !important;
+      }
+
+      .container {
+        max-width: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+
+      .card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 6px 10px;
+        margin-bottom: 6px;
+        page-break-inside: avoid;
+        flex-shrink: 0;
+      }
+
+      /* Card de produtos ocupa espaço restante */
+      .card:nth-child(3) {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+      }
+
+      .card-header {
+        margin-bottom: 6px;
+        padding-bottom: 4px;
+        gap: 8px;
+      }
+
+      .card-title {
+        font-size: 11px;
+      }
+
+      /* Header empresa - aumentado 50% */
+      .card:first-child {
+        padding: 12px 16px !important;
+        margin-bottom: 8px !important;
+      }
+
+      .company-header {
+        grid-template-columns: 100px 1fr;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .logo-box {
+        width: 90px;
+        height: 60px;
+        padding-left: 8px;
+      }
+
+      .company-info {
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+      }
+
+      .company-details {
+        justify-content: center;
+        font-size: 13px;
+        gap: 20px;
+      }
+
+      /* Card de informações do pedido na impressão */
+      #cardInfo {
+        padding: 8px !important;
+        border: 1px solid #aaa !important;
+        margin-bottom: 8px !important;
+      }
+
+      #cardInfo .card-header {
+        display: none !important;
+      }
+
+      #cardInfo .form-grid {
+        display: none !important;
+      }
+
+      /* Layout de tabela para impressão - Matriz 3 colunas x 5 linhas */
+      .print-info-table {
+        display: table !important;
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 11px;
+        line-height: 1.4;
+      }
+
+      .print-info-table .print-row {
+        display: table-row;
+      }
+
+      .print-info-table .print-cell {
+        display: table-cell;
+        padding: 6px 8px;
+        border: 1px solid #aaa;
+        vertical-align: middle;
+      }
+
+      .print-info-table .print-label {
+        font-weight: 700;
+        background: #eee !important;
+        white-space: nowrap;
+        font-size: 10px;
+        text-transform: uppercase;
+      }
+
+      .print-info-table .print-value {
+        font-size: 11px;
+      }
+
+      .print-info-table .print-value span {
+        display: block;
+        min-height: 14px;
+      }
+
+      /* Ocultar botões e elementos desnecessários */
+      .actions-bar,
+      .btn-remove,
+      .header-actions,
+      .products-table .col-action {
+        display: none !important;
+      }
+
+      /* Card de produtos - ocupa espaço restante */
+      .card:nth-child(3) .card-header {
+        display: none !important;
+      }
+
+      .card:nth-child(3) {
+        padding: 0 !important;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 4px !important;
+      }
+
+      /* Tabela de produtos - aumentada */
+      .products-table-wrap {
+        margin: 0;
+        padding: 0;
+        flex: 1;
+        overflow: hidden;
+        border: 1px solid #aaa;
+      }
+
+      .products-table {
+        font-size: 11px;
+        width: 100%;
+        table-layout: fixed;
+      }
+
+      .products-table thead th {
+        padding: 8px 6px;
+        font-size: 10px;
+        background: #eee !important;
+        border-bottom: 1px solid #999;
+        text-align: center;
+      }
+
+      .products-table tbody td {
+        padding: 6px 8px;
+        border-bottom: 1px solid #ddd;
+        text-align: center;
+      }
+
+      .products-table input,
+      .products-table select {
+        border: none !important;
+        padding: 4px 6px;
+        font-size: 11px;
+        background: transparent !important;
+        box-shadow: none !important;
+        -webkit-appearance: none;
+        appearance: none;
+        text-align: center;
+      }
+
+      .products-table input[readonly] {
+        background: transparent !important;
+        font-weight: 600;
+      }
+
+      .products-table .col-item { width: 5%; }
+      .products-table .col-und { width: 8%; }
+      .products-table .col-ref { width: 6%; }
+      .products-table .col-qtde-conj { width: 8%; }
+      .products-table .col-qtde { width: 8%; }
+      .products-table .col-desc { width: 35%; text-align: left !important; }
+      .products-table .col-pr-conj { width: 9%; }
+      .products-table .col-pr { width: 9%; }
+      .products-table .col-total { width: 12%; }
+
+      .products-table .col-desc input {
+        text-align: left !important;
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+      }
+
+      /* Ocultar linhas vazias */
+      .products-table tbody tr.hide-print {
+        display: none !important;
+      }
+
+      /* Total bar */
+      .total-bar {
+        padding: 8px 16px;
+        margin: 0;
+        background: #f0f0f0 !important;
+        border: 1px solid #aaa;
+        border-top: none;
+        gap: 10px;
+        flex-shrink: 0;
+        border-radius: 0 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center;
+        justify-content: flex-end;
+      }
+
+      .total-label {
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .total-value {
+        font-size: 16px;
+        font-weight: 700;
+        color: #000;
+      }
+
+      /* Seção entrega e pagamento - aumentada 100% */
+      .card:nth-child(4) {
+        padding: 12px 16px !important;
+        margin-bottom: 0 !important;
+        border: 1px solid #aaa !important;
+      }
+
+      .card:nth-child(4) .card-header {
+        display: none !important;
+      }
+
+      .delivery-grid {
+        gap: 10px;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        align-items: center;
+        padding: 0 16px 0 0;
+      }
+
+      /* Observações - ocupa linha inteira */
+      .delivery-grid .form-group:first-child {
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .delivery-grid .form-group {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .delivery-grid .form-group label {
+        display: inline;
+        font-size: 11px;
+        font-weight: 600;
+        margin-right: 8px;
+        white-space: nowrap;
+      }
+
+      .delivery-grid .form-group input {
+        display: inline;
+        width: 100%;
+        flex: 1;
+        min-width: 0;
+        padding: 6px 10px !important;
+        font-size: 11px !important;
+        border: 1px solid #aaa !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+      }
+
+      .radio-group {
+        gap: 12px;
+        margin-top: 0 !important;
+        display: inline-flex !important;
+      }
+
+      .radio-option {
+        gap: 4px;
+      }
+
+      .radio-option input[type="radio"] {
+        width: 14px;
+        height: 14px;
+      }
+
+      .radio-option span {
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- CABEÇALHO DA EMPRESA -->
+    <div class="card">
+      <div class="company-header">
+        <!-- Logo - 20% -->
+        <div class="logo-box">
+          <img alt="Logo" src="images/logo_1.png">
+        </div>
+
+        <!-- Informações - 60% -->
+        <div class="company-info">
+          <div class="company-details">
+            <span>Rua Cantor Luiz Gonzaga, 291/301 - Bairro Castelo</span>
+            <span>CEP 30840-340 - Belo Horizonte/MG</span>
+          </div>
+          <div class="company-details">
+            <span>roberto@portaljmp.com.br</span>
+            <span>(31) 99697-5243</span>
+          </div>
+        </div>
+
+        <!-- Botões - 20% -->
+        <div class="header-actions">
+          <button class="btn-theme" id="themeToggle" type="button" title="Alternar modo escuro">
+            <span class="theme-icon">&#9790;</span>
+          </button>
+          <button class="btn-header" id="printBtn" type="button">
+            <span class="icon">&#128438;</span> Imprimir / PDF
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- INFORMAÇÕES DO PEDIDO -->
+    <div class="card" id="cardInfo">
+      <div class="card-header">
+        <div class="card-title">Informações do Pedido</div>
+      </div>
+
+      <!-- Layout normal (tela) -->
+      <div class="form-grid form-grid-4" style="margin-bottom: 16px;">
+        <div class="form-group">
+          <label>Pedido N°</label>
+          <input id="pedidoNumero" type="text" placeholder="0001" />
+        </div>
+        <div class="form-group">
+          <label>Data</label>
+          <input id="pedidoData" type="date" />
+        </div>
+        <div class="form-group">
+          <label>Comprador</label>
+          <input id="comprador" type="text" placeholder="Nome do comprador" />
+        </div>
+        <div class="form-group">
+          <label>Vendedor</label>
+          <input id="vendedor" type="text" placeholder="Nome do vendedor" />
+        </div>
+      </div>
+
+      <div class="form-grid form-grid-2" style="margin-bottom: 16px;">
+        <div class="form-group">
+          <label>Razão Social</label>
+          <input id="razaoSocial" type="text" placeholder="Razão social da empresa" />
+        </div>
+        <div class="form-group">
+          <label>Fornecedor</label>
+          <input id="fornecedor" type="text" placeholder="Nome do fornecedor" />
+        </div>
+      </div>
+
+      <div class="form-grid form-grid-4" style="margin-bottom: 16px;">
+        <div class="form-group span-2">
+          <label>Endereço</label>
+          <input id="endereco" type="text" placeholder="Endereço completo" />
+        </div>
+        <div class="form-group">
+          <label>CEP</label>
+          <input id="cep" type="text" placeholder="00000-000" maxlength="9" />
+        </div>
+        <div class="form-group">
+          <label>Bairro</label>
+          <input id="bairro" type="text" placeholder="Bairro" />
+        </div>
+      </div>
+
+      <div class="form-grid form-grid-4" style="margin-bottom: 16px;">
+        <div class="form-group">
+          <label>Telefone</label>
+          <input id="telefone" type="text" placeholder="(00) 00000-0000" maxlength="15" />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input id="email" type="email" placeholder="email@exemplo.com" />
+        </div>
+        <div class="form-group">
+          <label>Cidade</label>
+          <input id="cidade" type="text" placeholder="Cidade" />
+        </div>
+        <div class="form-group">
+          <label>UF</label>
+          <select id="uf">
+            <option value="">-</option>
+            <option value="AC">AC</option>
+            <option value="AL">AL</option>
+            <option value="AP">AP</option>
+            <option value="AM">AM</option>
+            <option value="BA">BA</option>
+            <option value="CE">CE</option>
+            <option value="DF">DF</option>
+            <option value="ES">ES</option>
+            <option value="GO">GO</option>
+            <option value="MA">MA</option>
+            <option value="MT">MT</option>
+            <option value="MS">MS</option>
+            <option value="MG">MG</option>
+            <option value="PA">PA</option>
+            <option value="PB">PB</option>
+            <option value="PR">PR</option>
+            <option value="PE">PE</option>
+            <option value="PI">PI</option>
+            <option value="RJ">RJ</option>
+            <option value="RN">RN</option>
+            <option value="RS">RS</option>
+            <option value="RO">RO</option>
+            <option value="RR">RR</option>
+            <option value="SC">SC</option>
+            <option value="SP">SP</option>
+            <option value="SE">SE</option>
+            <option value="TO">TO</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-grid form-grid-2">
+        <div class="form-group">
+          <label>CNPJ</label>
+          <input id="cnpj" type="text" placeholder="00.000.000/0000-00" maxlength="18" />
+        </div>
+        <div class="form-group">
+          <label>Inscrição Estadual</label>
+          <input id="inscEst" type="text" placeholder="Inscrição estadual" />
+        </div>
+      </div>
+
+      <!-- Layout compacto (impressão) - Matriz 3 colunas x 5 linhas -->
+      <div class="print-info-table">
+        <div class="print-row">
+          <div class="print-cell print-label">Pedido Nº</div>
+          <div class="print-cell print-value"><span data-mirror="pedidoNumero"></span></div>
+          <div class="print-cell print-label">Data</div>
+          <div class="print-cell print-value"><span data-mirror="pedidoData"></span></div>
+          <div class="print-cell print-label">Vendedor</div>
+          <div class="print-cell print-value"><span data-mirror="vendedor"></span></div>
+        </div>
+        <div class="print-row">
+          <div class="print-cell print-label">Comprador</div>
+          <div class="print-cell print-value"><span data-mirror="comprador"></span></div>
+          <div class="print-cell print-label">Fornecedor</div>
+          <div class="print-cell print-value"><span data-mirror="fornecedor"></span></div>
+          <div class="print-cell print-label">Razão Social</div>
+          <div class="print-cell print-value"><span data-mirror="razaoSocial"></span></div>
+        </div>
+        <div class="print-row">
+          <div class="print-cell print-label">CNPJ</div>
+          <div class="print-cell print-value"><span data-mirror="cnpj"></span></div>
+          <div class="print-cell print-label">Insc. Est.</div>
+          <div class="print-cell print-value"><span data-mirror="inscEst"></span></div>
+          <div class="print-cell print-label">Telefone</div>
+          <div class="print-cell print-value"><span data-mirror="telefone"></span></div>
+        </div>
+        <div class="print-row">
+          <div class="print-cell print-label">Endereço</div>
+          <div class="print-cell print-value"><span data-mirror="endereco"></span></div>
+          <div class="print-cell print-label">Bairro</div>
+          <div class="print-cell print-value"><span data-mirror="bairro"></span></div>
+          <div class="print-cell print-label">CEP</div>
+          <div class="print-cell print-value"><span data-mirror="cep"></span></div>
+        </div>
+        <div class="print-row">
+          <div class="print-cell print-label">Cidade</div>
+          <div class="print-cell print-value"><span data-mirror="cidade"></span></div>
+          <div class="print-cell print-label">UF</div>
+          <div class="print-cell print-value"><span data-mirror="uf"></span></div>
+          <div class="print-cell print-label">Email</div>
+          <div class="print-cell print-value"><span data-mirror="email"></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRODUTOS -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Produtos</div>
+      </div>
+
+      <div class="actions-bar">
+        <button class="btn btn-primary" id="addRowBtn" type="button">+ Adicionar Item</button>
+      </div>
+
+      <div class="products-table-wrap">
+        <table class="products-table" id="productTable">
+          <thead>
+            <tr>
+              <th class="col-item">Item</th>
+              <th class="col-und">Emb.</th>
+              <th class="col-ref">Ref.</th>
+              <th class="col-qtde-conj">Qtd. Emb.</th>
+              <th class="col-qtde">Qtd. Und.</th>
+              <th class="col-desc">Descrição</th>
+              <th class="col-pr-conj">Pr. Emb.</th>
+              <th class="col-pr">Pr. Und.</th>
+              <th class="col-total">Total</th>
+              <th class="col-action"></th>
+            </tr>
+          </thead>
+          <tbody id="productTbody">
+            <!-- Linhas inseridas via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="total-bar">
+        <span class="total-label">Total Geral:</span>
+        <span class="total-value">R$ <span id="grandTotal">0,00</span></span>
+      </div>
+    </div>
+
+    <!-- ENTREGA -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Entrega e Pagamento</div>
+      </div>
+
+      <div class="delivery-grid">
+        <div class="form-group">
+          <label>Observações</label>
+          <input id="obs" type="text" placeholder="Observações do pedido..." />
+        </div>
+        <div class="form-group">
+          <label>Transporte</label>
+          <div class="radio-group" style="margin-top: 8px;">
+            <label class="radio-option">
+              <input type="radio" name="transporte" value="CIF" />
+              <span>CIF</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="transporte" value="FOB" />
+              <span>FOB</span>
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Pagamento</label>
+          <input id="pagto" type="text" placeholder="Forma de pagamento" />
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const tbody = document.getElementById('productTbody');
+    const grandTotalEl = document.getElementById('grandTotal');
+
+    // Dicionário de embalagens (EMB) com seus valores numéricos
+    const embValues = {
+      'CX02': 2,
+      'CX04': 4,
+      'CX06': 6,
+      'CX08': 8,
+      'CX10': 10,
+      'CX12': 12,
+      'AM02': 2,
+      'AM04': 4,
+      'AM06': 6,
+      'AM08': 8,
+      'AM10': 10,
+      'AM12': 12
+    };
+
+    function brMoney(value) {
+      const fixed = (Number(value) || 0).toFixed(2);
+      const parts = fixed.split('.');
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+      return parts.join(',');
+    }
+
+    function parseMoney(str) {
+      if (!str) return 0;
+      const cleaned = String(str).replace(/\./g, '').replace(',', '.');
+      const n = Number(cleaned);
+      return isNaN(n) ? 0 : n;
+    }
+
+    // Máscaras de input
+    function maskOnlyNumbers(input) {
+      input.addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/\D/g, '');
+      });
+    }
+
+    function maskCEP(input) {
+      input.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length > 8) value = value.slice(0, 8);
+        if (value.length > 5) {
+          value = value.slice(0, 5) + '-' + value.slice(5);
+        }
+        e.target.value = value;
+      });
+    }
+
+    function maskTelefone(input) {
+      input.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length > 11) value = value.slice(0, 11);
+
+        if (value.length > 10) {
+          // Celular: (00) 00000-0000
+          value = '(' + value.slice(0, 2) + ') ' + value.slice(2, 7) + '-' + value.slice(7);
+        } else if (value.length > 6) {
+          // Fixo: (00) 0000-0000
+          value = '(' + value.slice(0, 2) + ') ' + value.slice(2, 6) + '-' + value.slice(6);
+        } else if (value.length > 2) {
+          value = '(' + value.slice(0, 2) + ') ' + value.slice(2);
+        } else if (value.length > 0) {
+          value = '(' + value;
+        }
+        e.target.value = value;
+      });
+    }
+
+    function maskCNPJ(input) {
+      input.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length > 14) value = value.slice(0, 14);
+
+        if (value.length > 12) {
+          value = value.slice(0, 2) + '.' + value.slice(2, 5) + '.' + value.slice(5, 8) + '/' + value.slice(8, 12) + '-' + value.slice(12);
+        } else if (value.length > 8) {
+          value = value.slice(0, 2) + '.' + value.slice(2, 5) + '.' + value.slice(5, 8) + '/' + value.slice(8);
+        } else if (value.length > 5) {
+          value = value.slice(0, 2) + '.' + value.slice(2, 5) + '.' + value.slice(5);
+        } else if (value.length > 2) {
+          value = value.slice(0, 2) + '.' + value.slice(2);
+        }
+        e.target.value = value;
+      });
+    }
+
+    // Aplicar máscaras aos campos
+    maskCEP(document.getElementById('cep'));
+    maskTelefone(document.getElementById('telefone'));
+    maskCNPJ(document.getElementById('cnpj'));
+
+    function recalc() {
+      let sum = 0;
+      [...tbody.querySelectorAll('tr')].forEach(tr => {
+        // Pega o valor da embalagem selecionada
+        const embSelect = tr.querySelector('[data-col="und"]');
+        const embKey = embSelect.value;
+        const embValue = embValues[embKey] || 0;
+
+        // Qtd. Emb. (quantidade de embalagens)
+        const qtdeConj = parseMoney(tr.querySelector('[data-col="qtde-conj"]').value);
+
+        // Calcula Qtd. Und. = EMB × Qtd. Emb.
+        const qtde = embValue * qtdeConj;
+        tr.querySelector('[data-col="qtde"]').value = qtde > 0 ? qtde : '';
+
+        // Preços (pr = Pr. Und., prConj = Pr. Emb.)
+        const prConj = parseMoney(tr.querySelector('[data-col="pr-conj"]').value);
+        const pr = parseMoney(tr.querySelector('[data-col="pr"]').value);
+
+        // Calcula Total usando Qtd. Emb. × Pr. Emb. OU Qtd. Und. × Pr. Und.
+        let total = 0;
+        if (qtdeConj > 0 && prConj > 0) {
+          total = qtdeConj * prConj;
+        } else if (qtde > 0 && pr > 0) {
+          total = qtde * pr;
+        }
+
+        tr.querySelector('[data-col="total"]').value = brMoney(total);
+        sum += total;
+      });
+      grandTotalEl.textContent = brMoney(sum);
+    }
+
+    function makeRow(itemNumber) {
+      const tr = document.createElement('tr');
+
+      tr.innerHTML = `
+        <td class="col-item"><input data-col="item" type="text" value="${itemNumber}" class="text-center" readonly /></td>
+        <td class="col-und">
+          <select data-col="und" class="text-center">
+            <option value="">-</option>
+            <option value="CX02">CX02</option>
+            <option value="CX04">CX04</option>
+            <option value="CX06">CX06</option>
+            <option value="CX08">CX08</option>
+            <option value="CX10">CX10</option>
+            <option value="CX12">CX12</option>
+            <option value="AM02">AM02</option>
+            <option value="AM04">AM04</option>
+            <option value="AM06">AM06</option>
+            <option value="AM08">AM08</option>
+            <option value="AM10">AM10</option>
+            <option value="AM12">AM12</option>
+          </select>
+        </td>
+        <td class="col-ref"><input data-col="ref" type="text" placeholder="REF" /></td>
+        <td class="col-qtde-conj"><input data-col="qtde-conj" type="text" inputmode="numeric" class="text-right" placeholder="0" /></td>
+        <td class="col-qtde"><input data-col="qtde" type="text" class="text-right" readonly /></td>
+        <td class="col-desc"><input data-col="desc" type="text" placeholder="Descrição do produto" /></td>
+        <td class="col-pr-conj"><input data-col="pr-conj" type="text" inputmode="decimal" class="text-right" placeholder="0,00" /></td>
+        <td class="col-pr"><input data-col="pr" type="text" inputmode="decimal" class="text-right" placeholder="0,00" /></td>
+        <td class="col-total"><input data-col="total" type="text" value="0,00" class="text-right" readonly /></td>
+        <td class="col-action"><button class="btn-remove" type="button" title="Remover item">&times;</button></td>
+      `;
+
+      // Event listeners para inputs (exceto campos de preço que têm lógica especial)
+      const prInput = tr.querySelector('[data-col="pr"]'); // Pr. Und.
+      const prConjInput = tr.querySelector('[data-col="pr-conj"]'); // Pr. Emb.
+
+      tr.querySelectorAll('input').forEach(inp => {
+        // Campos de preço têm listeners próprios
+        if (inp !== prInput && inp !== prConjInput) {
+          inp.addEventListener('input', () => recalc());
+        }
+      });
+
+      // Event listener no select de embalagem para recalcular
+      const embSelect = tr.querySelector('[data-col="und"]');
+      embSelect.addEventListener('change', () => recalc());
+
+      // Máscara de apenas números no campo REF (máx 5 dígitos)
+      const refInput = tr.querySelector('[data-col="ref"]');
+      refInput.addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/\D/g, '').slice(0, 5);
+      });
+
+      // Máscara de apenas números inteiros no campo Qtd. Emb.
+      const qtdeConjInput = tr.querySelector('[data-col="qtde-conj"]');
+      qtdeConjInput.addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/\D/g, '');
+      });
+
+      // Função para aplicar máscara monetária
+      function applyMoneyMask(e) {
+        let value = e.target.value;
+        value = value.replace(/[^\d,]/g, '');
+        const parts = value.split(',');
+        if (parts.length > 2) {
+          value = parts[0] + ',' + parts.slice(1).join('');
+        }
+        if (parts.length === 2 && parts[1].length > 2) {
+          value = parts[0] + ',' + parts[1].slice(0, 2);
+        }
+        e.target.value = value;
+      }
+
+      // Pr. Und. - ao preencher, calcula Pr. Emb. automaticamente
+      prInput.addEventListener('input', (e) => {
+        applyMoneyMask(e);
+
+        const embKey = tr.querySelector('[data-col="und"]').value;
+        const embValue = embValues[embKey] || 0;
+
+        if (embValue > 0) {
+          const prUnd = parseMoney(prInput.value);
+          if (prUnd > 0) {
+            // Pr. Emb. = Pr. Und. × EMB
+            const prEmb = prUnd * embValue;
+            prConjInput.value = brMoney(prEmb);
+          }
+        }
+        recalc(); // Recalcula após atualizar o preço complementar
+      });
+
+      // Pr. Emb. - ao preencher, calcula Pr. Und. automaticamente
+      prConjInput.addEventListener('input', (e) => {
+        applyMoneyMask(e);
+
+        const embKey = tr.querySelector('[data-col="und"]').value;
+        const embValue = embValues[embKey] || 0;
+
+        if (embValue > 0) {
+          const prEmb = parseMoney(prConjInput.value);
+          if (prEmb > 0) {
+            // Pr. Und. = Pr. Emb. / EMB
+            const prUnd = prEmb / embValue;
+            prInput.value = brMoney(prUnd);
+          }
+        }
+        recalc(); // Recalcula após atualizar o preço complementar
+      });
+
+      tr.querySelector('button').addEventListener('click', () => {
+        tr.remove();
+        [...tbody.querySelectorAll('tr')].forEach((row, idx) => {
+          row.querySelector('[data-col="item"]').value = (idx + 1);
+        });
+        recalc();
+      });
+
+      return tr;
+    }
+
+    function addRow() {
+      const next = tbody.querySelectorAll('tr').length + 1;
+      tbody.appendChild(makeRow(next));
+    }
+
+    // Inicia com 5 linhas
+    for (let i = 0; i < 5; i++) addRow();
+
+    document.getElementById('addRowBtn').addEventListener('click', addRow);
+
+    document.getElementById('printBtn').addEventListener('click', () => {
+      // Copia valores para tabela de impressão
+      document.querySelectorAll('[data-mirror]').forEach(span => {
+        const id = span.dataset.mirror;
+        const input = document.getElementById(id);
+        if (input) {
+          let value = input.value;
+          // Formata data se for campo de data
+          if (input.type === 'date' && value) {
+            const [y, m, d] = value.split('-');
+            value = `${d}/${m}/${y}`;
+          }
+          span.textContent = value || '-';
+        }
+      });
+
+      // Oculta linhas vazias antes de imprimir
+      const rows = tbody.querySelectorAll('tr');
+      rows.forEach(tr => {
+        const desc = tr.querySelector('[data-col="desc"]').value.trim();
+        const qtde = tr.querySelector('[data-col="qtde"]').value.trim();
+        if (!desc && !qtde) {
+          tr.classList.add('hide-print');
+        } else {
+          tr.classList.remove('hide-print');
+        }
+      });
+      window.print();
+    });
+
+    // Toggle de tema (modo escuro)
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('.theme-icon');
+
+    // Carrega preferência salva ou detecta preferência do sistema
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      themeIcon.innerHTML = '&#9728;'; // Sol
+    }
+
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+
+      if (isDark) {
+        document.documentElement.removeAttribute('data-theme');
+        themeIcon.innerHTML = '&#9790;'; // Lua
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeIcon.innerHTML = '&#9728;'; // Sol
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+  </script>
+</body>
+</html>
