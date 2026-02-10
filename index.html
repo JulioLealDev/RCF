@@ -1742,11 +1742,11 @@
         limparCamposEmpresa();
         toggleCamposEmpresa(true);
       } else {
-        // Empresa selecionada - preenche e desativa campos
+        // Empresa selecionada - preenche e mantém campos editáveis
         const empresa = empresasData.find(e => e.id == valor);
         if (empresa) {
           preencherCamposEmpresa(empresa);
-          toggleCamposEmpresa(false);
+          toggleCamposEmpresa(true);
         }
       }
     });
