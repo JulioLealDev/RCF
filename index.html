@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Pedido - Template</title>
+  <title>RCF</title>
 
   <style>
     :root {
@@ -1066,7 +1066,7 @@
       </div>
 
       <!-- Layout normal (tela) -->
-      <div class="form-grid form-grid-4" style="margin-bottom: 16px;">
+      <div class="form-grid form-grid-3" style="margin-bottom: 16px;">
         <div class="form-group">
           <label>Pedido N°</label>
           <input id="pedidoNumero" type="text" placeholder="0001" />
@@ -1076,12 +1076,8 @@
           <input id="pedidoData" type="date" />
         </div>
         <div class="form-group">
-          <label>Comprador</label>
-          <input id="comprador" type="text" placeholder="Nome do comprador" />
-        </div>
-        <div class="form-group">
           <label>Vendedor</label>
-          <input id="vendedor" type="text" placeholder="Nome do vendedor" />
+          <input id="vendedor" type="text" placeholder="Nome do vendedor" value="Roberto Costa Faria" />
         </div>
       </div>
 
@@ -1172,14 +1168,18 @@
           </div>
         </div>
 
-        <div class="form-grid form-grid-2">
-          <div class="form-group">
+        <div class="form-grid form-grid-4">
+          <div class="form-group span-2">
             <label>CNPJ</label>
             <input id="cnpj" type="text" placeholder="00.000.000/0000-00" maxlength="18" class="campo-empresa" disabled />
           </div>
           <div class="form-group">
             <label>Inscrição Estadual</label>
             <input id="inscEst" type="text" placeholder="Inscrição estadual" class="campo-empresa" disabled />
+          </div>
+          <div class="form-group">
+            <label>Comprador</label>
+            <input id="comprador" type="text" placeholder="Nome do comprador" class="campo-empresa" disabled />
           </div>
         </div>
       </div>
@@ -1652,6 +1652,7 @@
       document.getElementById('uf').value = empresa.uf || '';
       document.getElementById('telefone').value = empresa.telefone || '';
       document.getElementById('email').value = empresa.email || '';
+      document.getElementById('comprador').value = empresa.comprador || '';
       document.getElementById('fornecedor').value = '';
     }
 
@@ -1667,6 +1668,7 @@
       document.getElementById('uf').value = '';
       document.getElementById('telefone').value = '';
       document.getElementById('email').value = '';
+      document.getElementById('comprador').value = '';
       document.getElementById('fornecedor').value = '';
     }
 
