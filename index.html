@@ -54,7 +54,8 @@
       border-color: rgba(239, 68, 68, 0.3);
     }
 
-    [data-theme="dark"] .products-table input[readonly] {
+    [data-theme="dark"] .products-table input[readonly],
+    [data-theme="dark"] .products-table select:disabled {
       background: var(--border);
     }
 
@@ -369,6 +370,17 @@
       background: #f1f5f9;
       color: var(--text);
       font-weight: 600;
+    }
+
+    .products-table select:disabled {
+      background: #f1f5f9;
+      color: var(--text);
+      font-weight: 600;
+      cursor: default;
+      pointer-events: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
     }
 
     /* Botões */
@@ -894,7 +906,8 @@
         text-align: center;
       }
 
-      .products-table input[readonly] {
+      .products-table input[readonly],
+      .products-table select:disabled {
         background: transparent !important;
         font-weight: 600;
       }
@@ -1168,8 +1181,8 @@
           </div>
         </div>
 
-        <div class="form-grid form-grid-4">
-          <div class="form-group span-2">
+        <div class="form-grid form-grid-3">
+          <div class="form-group">
             <label>CNPJ</label>
             <input id="cnpj" type="text" placeholder="00.000.000/0000-00" maxlength="18" class="campo-empresa" disabled />
           </div>
@@ -1236,7 +1249,15 @@
       </div>
 
       <div class="actions-bar">
-        <button class="btn btn-primary" id="addRowBtn" type="button">+ Adicionar Item</button>
+        <div class="actions-group">
+          <div class="form-group" style="margin-bottom: 0; min-width: 300px;">
+            <select id="selectProduto" style="padding: 10px 14px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; color: var(--text); background: var(--input-bg); width: 100%;">
+              <option value="">-- Selecione um produto --</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" id="addProdutoBtn" type="button">+ Adicionar Produto</button>
+        </div>
+        <button class="btn btn-secondary" id="addRowBtn" type="button">+ Linha em Branco</button>
       </div>
 
       <div class="products-table-wrap">
@@ -1307,11 +1328,14 @@
     // Dicionário de embalagens (EMB) com seus valores numéricos
     const embValues = {
       'CX02': 2,
+      'CX03': 3,
       'CX04': 4,
+      'CX05': 5,
       'CX06': 6,
       'CX08': 8,
       'CX10': 10,
       'CX12': 12,
+      'CX20': 20,
       'AM02': 2,
       'AM04': 4,
       'AM06': 6,
@@ -1428,37 +1452,57 @@
       grandTotalEl.textContent = brMoney(sum);
     }
 
-    function makeRow(itemNumber) {
+    function makeRow(itemNumber, produto = null) {
       const tr = document.createElement('tr');
+      const isFromProduct = produto !== null;
+
+      // Valores do produto ou vazios
+      const emb = produto ? produto.embalagem : '';
+      const ref = produto ? produto.ref : '';
+      const desc = produto ? produto.descricao : '';
+      const prEmb = produto ? produto.precoEmbalagem : '';
+      const prUnd = produto ? produto.precoUnidade : '';
+
+      // Se vier de produto, campos são readonly (exceto QTD.EMB)
+      const readonlyAttr = isFromProduct ? 'readonly' : '';
+      const disabledAttr = isFromProduct ? 'disabled' : '';
 
       tr.innerHTML = `
         <td class="col-item"><input data-col="item" type="text" value="${itemNumber}" class="text-center" readonly /></td>
         <td class="col-und">
-          <select data-col="und" class="text-center">
+          <select data-col="und" class="text-center" ${disabledAttr}>
             <option value="">-</option>
-            <option value="CX02">CX02</option>
-            <option value="CX04">CX04</option>
-            <option value="CX06">CX06</option>
-            <option value="CX08">CX08</option>
-            <option value="CX10">CX10</option>
-            <option value="CX12">CX12</option>
-            <option value="AM02">AM02</option>
-            <option value="AM04">AM04</option>
-            <option value="AM06">AM06</option>
-            <option value="AM08">AM08</option>
-            <option value="AM10">AM10</option>
-            <option value="AM12">AM12</option>
+            <option value="CX02" ${emb === 'CX02' ? 'selected' : ''}>CX02</option>
+            <option value="CX03" ${emb === 'CX03' ? 'selected' : ''}>CX03</option>
+            <option value="CX04" ${emb === 'CX04' ? 'selected' : ''}>CX04</option>
+            <option value="CX05" ${emb === 'CX05' ? 'selected' : ''}>CX05</option>
+            <option value="CX06" ${emb === 'CX06' ? 'selected' : ''}>CX06</option>
+            <option value="CX08" ${emb === 'CX08' ? 'selected' : ''}>CX08</option>
+            <option value="CX10" ${emb === 'CX10' ? 'selected' : ''}>CX10</option>
+            <option value="CX12" ${emb === 'CX12' ? 'selected' : ''}>CX12</option>
+            <option value="CX20" ${emb === 'CX20' ? 'selected' : ''}>CX20</option>
+            <option value="AM02" ${emb === 'AM02' ? 'selected' : ''}>AM02</option>
+            <option value="AM04" ${emb === 'AM04' ? 'selected' : ''}>AM04</option>
+            <option value="AM06" ${emb === 'AM06' ? 'selected' : ''}>AM06</option>
+            <option value="AM08" ${emb === 'AM08' ? 'selected' : ''}>AM08</option>
+            <option value="AM10" ${emb === 'AM10' ? 'selected' : ''}>AM10</option>
+            <option value="AM12" ${emb === 'AM12' ? 'selected' : ''}>AM12</option>
           </select>
         </td>
-        <td class="col-ref"><input data-col="ref" type="text" placeholder="REF" /></td>
+        <td class="col-ref"><input data-col="ref" type="text" value="${ref}" placeholder="REF" ${readonlyAttr} /></td>
         <td class="col-qtde-conj"><input data-col="qtde-conj" type="text" inputmode="numeric" class="text-right" placeholder="0" /></td>
         <td class="col-qtde"><input data-col="qtde" type="text" class="text-right" readonly /></td>
-        <td class="col-desc"><input data-col="desc" type="text" placeholder="Descrição do produto" /></td>
-        <td class="col-pr-conj"><input data-col="pr-conj" type="text" inputmode="decimal" class="text-right" placeholder="0,00" /></td>
-        <td class="col-pr"><input data-col="pr" type="text" inputmode="decimal" class="text-right" placeholder="0,00" /></td>
+        <td class="col-desc"><input data-col="desc" type="text" value="${desc}" placeholder="Descrição do produto" ${readonlyAttr} /></td>
+        <td class="col-pr-conj"><input data-col="pr-conj" type="text" inputmode="decimal" class="text-right" value="${prEmb}" placeholder="0,00" ${readonlyAttr} /></td>
+        <td class="col-pr"><input data-col="pr" type="text" inputmode="decimal" class="text-right" value="${prUnd}" placeholder="0,00" ${readonlyAttr} /></td>
         <td class="col-total"><input data-col="total" type="text" value="0,00" class="text-right" readonly /></td>
         <td class="col-action"><button class="btn-remove" type="button" title="Remover item">&times;</button></td>
       `;
+
+      // Marca a linha como vinda de produto para controle
+      if (isFromProduct) {
+        tr.dataset.fromProduct = 'true';
+      }
 
       // Event listeners para inputs (exceto campos de preço que têm lógica especial)
       const prInput = tr.querySelector('[data-col="pr"]'); // Pr. Und.
@@ -1471,20 +1515,25 @@
         }
       });
 
-      // Event listener no select de embalagem para recalcular
+      // Event listener no select de embalagem para recalcular (apenas se não for readonly)
       const embSelect = tr.querySelector('[data-col="und"]');
-      embSelect.addEventListener('change', () => recalc());
+      if (!isFromProduct) {
+        embSelect.addEventListener('change', () => recalc());
+      }
 
-      // Máscara de apenas números no campo REF (máx 5 dígitos)
+      // Máscara de apenas números no campo REF (máx 5 dígitos) - apenas se editável
       const refInput = tr.querySelector('[data-col="ref"]');
-      refInput.addEventListener('input', (e) => {
-        e.target.value = e.target.value.replace(/\D/g, '').slice(0, 5);
-      });
+      if (!isFromProduct) {
+        refInput.addEventListener('input', (e) => {
+          e.target.value = e.target.value.replace(/\D/g, '').slice(0, 5);
+        });
+      }
 
       // Máscara de apenas números inteiros no campo Qtd. Emb.
       const qtdeConjInput = tr.querySelector('[data-col="qtde-conj"]');
       qtdeConjInput.addEventListener('input', (e) => {
         e.target.value = e.target.value.replace(/\D/g, '');
+        recalc();
       });
 
       // Função para aplicar máscara monetária
@@ -1501,41 +1550,43 @@
         e.target.value = value;
       }
 
-      // Pr. Und. - ao preencher, calcula Pr. Emb. automaticamente
-      prInput.addEventListener('input', (e) => {
-        applyMoneyMask(e);
+      // Pr. Und. - ao preencher, calcula Pr. Emb. automaticamente (apenas se editável)
+      if (!isFromProduct) {
+        prInput.addEventListener('input', (e) => {
+          applyMoneyMask(e);
 
-        const embKey = tr.querySelector('[data-col="und"]').value;
-        const embValue = embValues[embKey] || 0;
+          const embKey = tr.querySelector('[data-col="und"]').value;
+          const embValue = embValues[embKey] || 0;
 
-        if (embValue > 0) {
-          const prUnd = parseMoney(prInput.value);
-          if (prUnd > 0) {
-            // Pr. Emb. = Pr. Und. × EMB
-            const prEmb = prUnd * embValue;
-            prConjInput.value = brMoney(prEmb);
+          if (embValue > 0) {
+            const prUnd = parseMoney(prInput.value);
+            if (prUnd > 0) {
+              // Pr. Emb. = Pr. Und. × EMB
+              const prEmb = prUnd * embValue;
+              prConjInput.value = brMoney(prEmb);
+            }
           }
-        }
-        recalc(); // Recalcula após atualizar o preço complementar
-      });
+          recalc(); // Recalcula após atualizar o preço complementar
+        });
 
-      // Pr. Emb. - ao preencher, calcula Pr. Und. automaticamente
-      prConjInput.addEventListener('input', (e) => {
-        applyMoneyMask(e);
+        // Pr. Emb. - ao preencher, calcula Pr. Und. automaticamente
+        prConjInput.addEventListener('input', (e) => {
+          applyMoneyMask(e);
 
-        const embKey = tr.querySelector('[data-col="und"]').value;
-        const embValue = embValues[embKey] || 0;
+          const embKey = tr.querySelector('[data-col="und"]').value;
+          const embValue = embValues[embKey] || 0;
 
-        if (embValue > 0) {
-          const prEmb = parseMoney(prConjInput.value);
-          if (prEmb > 0) {
-            // Pr. Und. = Pr. Emb. / EMB
-            const prUnd = prEmb / embValue;
-            prInput.value = brMoney(prUnd);
+          if (embValue > 0) {
+            const prEmb = parseMoney(prConjInput.value);
+            if (prEmb > 0) {
+              // Pr. Und. = Pr. Emb. / EMB
+              const prUnd = prEmb / embValue;
+              prInput.value = brMoney(prUnd);
+            }
           }
-        }
-        recalc(); // Recalcula após atualizar o preço complementar
-      });
+          recalc(); // Recalcula após atualizar o preço complementar
+        });
+      }
 
       tr.querySelector('button').addEventListener('click', () => {
         tr.remove();
@@ -1553,8 +1604,7 @@
       tbody.appendChild(makeRow(next));
     }
 
-    // Inicia com 5 linhas
-    for (let i = 0; i < 5; i++) addRow();
+    // Não inicia com linhas - usuário adiciona produtos via seleção
 
     document.getElementById('addRowBtn').addEventListener('click', addRow);
 
@@ -1703,6 +1753,64 @@
 
     // Carrega as empresas ao iniciar
     carregarEmpresas();
+
+    // ===== SISTEMA DE SELEÇÃO DE PRODUTOS =====
+    let produtosData = [];
+    const selectProduto = document.getElementById('selectProduto');
+    const addProdutoBtn = document.getElementById('addProdutoBtn');
+
+    // Carrega produtos do JSON
+    async function carregarProdutos() {
+      try {
+        const response = await fetch('data/produtos.json');
+        const data = await response.json();
+        produtosData = data.produtos;
+
+        // Popula o dropdown com os produtos
+        produtosData.forEach(produto => {
+          const option = document.createElement('option');
+          option.value = produto.id;
+          option.textContent = `${produto.ref} - ${produto.descricao}`;
+          selectProduto.appendChild(option);
+        });
+      } catch (error) {
+        console.error('Erro ao carregar produtos:', error);
+      }
+    }
+
+    // Adiciona produto selecionado à tabela
+    function addProdutoSelecionado() {
+      const produtoId = selectProduto.value;
+
+      if (!produtoId) {
+        alert('Selecione um produto antes de adicionar.');
+        return;
+      }
+
+      const produto = produtosData.find(p => p.id == produtoId);
+      if (produto) {
+        const next = tbody.querySelectorAll('tr').length + 1;
+        tbody.appendChild(makeRow(next, produto));
+        recalc();
+
+        // Reseta o dropdown
+        selectProduto.value = '';
+      }
+    }
+
+    // Event listener para o botão de adicionar produto
+    addProdutoBtn.addEventListener('click', addProdutoSelecionado);
+
+    // Também permite adicionar ao pressionar Enter no dropdown
+    selectProduto.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        addProdutoSelecionado();
+      }
+    });
+
+    // Carrega os produtos ao iniciar
+    carregarProdutos();
   </script>
 </body>
 </html>
