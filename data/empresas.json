@@ -12,7 +12,8 @@
       "uf": "MG",
       "telefone": "",
       "email": "",
-      "comprador": "ROGÉRIO"
+      "comprador": "ROGÉRIO",
+      "fornecedor": "TENASTEEL INDÚSTRIA E COMÉRCIO LTDA"
     },
     {
       "id": 2,
@@ -26,7 +27,8 @@
       "uf": "MG",
       "telefone": "",
       "email": "",
-      "comprador": "RODRIGO"
+      "comprador": "RODRIGO",
+      "fornecedor": "TENASTEEL INDÚSTRIA E COMÉRCIO LTDA"
     },
     {
       "id": 3,
@@ -40,7 +42,8 @@
       "uf": "MG",
       "telefone": "",
       "email": "",
-      "comprador": "WILLY"
+      "comprador": "WILLY",
+      "fornecedor": "TENASTEEL INDÚSTRIA E COMÉRCIO LTDA"
     },
     {
       "id": 4,
@@ -54,7 +57,8 @@
       "uf": "MG",
       "telefone": "",
       "email": "bhfios@hotmail.com",
-      "comprador": "THIAGO"
+      "comprador": "THIAGO",
+      "fornecedor": "TENASTEEL INDÚSTRIA E COMÉRCIO LTDA"
     },
     {
       "id": 5,
@@ -68,7 +72,8 @@
       "uf": "MG",
       "telefone": "",
       "email": "",
-      "comprador": "LUCAS / MARCIO"
+      "comprador": "LUCAS / MARCIO",
+      "fornecedor": "TENASTEEL INDÚSTRIA E COMÉRCIO LTDA"
     },
     {
       "id": 6,
@@ -82,7 +87,8 @@
       "uf": "MG",
       "telefone": "",
       "email": "",
-      "comprador": "ALAOR"
+      "comprador": "ALAOR",
+      "fornecedor": "TENASTEEL INDÚSTRIA E COMÉRCIO LTDA"
     },
     {
       "id": 7,
@@ -96,7 +102,8 @@
       "uf": "MG",
       "telefone": "",
       "email": "",
-      "comprador": "CRISTIANO/EDUARDO"
+      "comprador": "CRISTIANO/EDUARDO",
+      "fornecedor": "TENASTEEL INDÚSTRIA E COMÉRCIO LTDA"
     },
     {
       "id": 8,
@@ -110,7 +117,8 @@
       "uf": "MG",
       "telefone": "",
       "email": "odairgrandebh@terra.com.br",
-      "comprador": "ODAIR"
+      "comprador": "ODAIR",
+      "fornecedor": "TENASTEEL INDÚSTRIA E COMÉRCIO LTDA"
     },
     {
       "id": 9,
@@ -124,7 +132,8 @@
       "uf": "MG",
       "telefone": "",
       "email": "",
-      "comprador": "JUSCELINO"
+      "comprador": "JUSCELINO",
+      "fornecedor": "TENASTEEL INDÚSTRIA E COMÉRCIO LTDA"
     },
     {
       "id": 10,
@@ -138,7 +147,8 @@
       "uf": "MG",
       "telefone": "",
       "email": "",
-      "comprador": "RAFAEL"
+      "comprador": "RAFAEL",
+      "fornecedor": "TENASTEEL INDÚSTRIA E COMÉRCIO LTDA"
     },
     {
       "id": 11,
@@ -152,7 +162,8 @@
       "uf": "MG",
       "telefone": "",
       "email": "",
-      "comprador": "RINALDO"
+      "comprador": "RINALDO",
+      "fornecedor": "TENASTEEL INDÚSTRIA E COMÉRCIO LTDA"
     },
     {
       "id": 12,
@@ -166,7 +177,8 @@
       "uf": "MG",
       "telefone": "",
       "email": "odairgrandebh@terra.com.br",
-      "comprador": "ODAIR/ANDRÉ"
+      "comprador": "ODAIR/ANDRÉ",
+      "fornecedor": "TENASTEEL INDÚSTRIA E COMÉRCIO LTDA"
     },
     {
       "id": 13,
@@ -180,7 +192,8 @@
       "uf": "MG",
       "telefone": "",
       "email": "",
-      "comprador": "XANDINHO"
+      "comprador": "XANDINHO",
+      "fornecedor": "TENASTEEL INDÚSTRIA E COMÉRCIO LTDA"
     },
     {
       "id": 14,
@@ -194,7 +207,8 @@
       "uf": "MG",
       "telefone": "",
       "email": "",
-      "comprador": "ROSE"
+      "comprador": "ROSE",
+      "fornecedor": "TENASTEEL INDÚSTRIA E COMÉRCIO LTDA"
     },
     {
       "id": 15,
@@ -208,7 +222,8 @@
       "uf": "MG",
       "telefone": "",
       "email": "",
-      "comprador": "AMANDA"
+      "comprador": "AMANDA",
+      "fornecedor": "TENASTEEL INDÚSTRIA E COMÉRCIO LTDA"
     },
     {
       "id": 16,
@@ -222,7 +237,8 @@
       "uf": "MG",
       "telefone": "(31) 3637-9463",
       "email": "comprasdepositoleticia@gmail.com",
-      "comprador": "RENATO"
+      "comprador": "RENATO",
+      "fornecedor": "TENASTEEL INDÚSTRIA E COMÉRCIO LTDA"
     },
     {
       "id": 17,
@@ -236,7 +252,8 @@
       "uf": "MG",
       "telefone": "",
       "email": "",
-      "comprador": "GLEICE"
+      "comprador": "GLEICE",
+      "fornecedor": "TENASTEEL INDÚSTRIA E COMÉRCIO LTDA"
     },
     {
       "id": 18,
@@ -250,7 +267,8 @@
       "uf": "MG",
       "telefone": "",
       "email": "chagas.roberto@uol.com.br",
-      "comprador": "ROBERTO"
+      "comprador": "ROBERTO",
+      "fornecedor": "TENASTEEL INDÚSTRIA E COMÉRCIO LTDA"
     },
     {
       "id": 19,
@@ -264,7 +282,8 @@
       "uf": "MG",
       "telefone": "(31) 3143-3482",
       "email": "ferramentasp1001@gmail.com",
-      "comprador": "ALEXANDRE"
+      "comprador": "ALEXANDRE",
+      "fornecedor": "TENASTEEL INDÚSTRIA E COMÉRCIO LTDA"
     }
   ]
 }
