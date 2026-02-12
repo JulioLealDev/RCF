@@ -620,6 +620,88 @@
       flex-wrap: wrap;
     }
 
+    /* Busca de produtos */
+    .produto-search-container {
+      position: relative;
+      min-width: 350px;
+    }
+
+    .produto-search-container input {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      color: var(--text);
+      background: var(--input-bg);
+      transition: all 0.2s ease;
+    }
+
+    .produto-search-container input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .produto-search-results {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+      max-height: 300px;
+      overflow-y: auto;
+      z-index: 100;
+      display: none;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .produto-search-results.active {
+      display: block;
+    }
+
+    .produto-search-item {
+      padding: 10px 14px;
+      cursor: pointer;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s ease;
+    }
+
+    .produto-search-item:last-child {
+      border-bottom: none;
+    }
+
+    .produto-search-item:hover,
+    .produto-search-item.active {
+      background: var(--table-hover);
+    }
+
+    .produto-search-item .produto-ref {
+      font-weight: 600;
+      color: var(--primary);
+      margin-right: 8px;
+    }
+
+    .produto-search-item .produto-desc {
+      color: var(--text);
+    }
+
+    .produto-search-item .produto-preco {
+      float: right;
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    .produto-search-empty {
+      padding: 14px;
+      text-align: center;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
     /* Responsividade */
     @media (max-width: 768px) {
       .company-header {
@@ -1336,12 +1418,10 @@
 
       <div class="actions-bar">
         <div class="actions-group">
-          <div class="form-group" style="margin-bottom: 0; min-width: 300px;">
-            <select id="selectProduto" style="padding: 10px 14px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; color: var(--text); background: var(--input-bg); width: 100%;">
-              <option value="">-- Selecione um produto --</option>
-            </select>
+          <div class="produto-search-container">
+            <input type="text" id="buscaProduto" placeholder="Buscar por REF ou descrição..." autocomplete="off" />
+            <div class="produto-search-results" id="searchResults"></div>
           </div>
-          <button class="btn btn-primary" id="addProdutoBtn" type="button">+ Adicionar Produto</button>
         </div>
         <button class="btn btn-secondary" id="addRowBtn" type="button">+ Linha em Branco</button>
       </div>
@@ -1893,10 +1973,10 @@
     // Carrega as empresas ao iniciar
     carregarEmpresas();
 
-    // ===== SISTEMA DE SELEÇÃO DE PRODUTOS =====
+    // ===== SISTEMA DE BUSCA DE PRODUTOS =====
     let produtosData = [];
-    const selectProduto = document.getElementById('selectProduto');
-    const addProdutoBtn = document.getElementById('addProdutoBtn');
+    const buscaProduto = document.getElementById('buscaProduto');
+    const searchResults = document.getElementById('searchResults');
 
     // Carrega produtos do JSON
     async function carregarProdutos() {
@@ -1904,47 +1984,113 @@
         const response = await fetch('data/produtos.json');
         const data = await response.json();
         produtosData = data.produtos;
-
-        // Popula o dropdown com os produtos
-        produtosData.forEach(produto => {
-          const option = document.createElement('option');
-          option.value = produto.id;
-          option.textContent = `${produto.ref} - ${produto.descricao}`;
-          selectProduto.appendChild(option);
-        });
       } catch (error) {
         console.error('Erro ao carregar produtos:', error);
       }
     }
 
-    // Adiciona produto selecionado à tabela
-    function addProdutoSelecionado() {
-      const produtoId = selectProduto.value;
+    // Filtra produtos por REF ou descrição
+    function filtrarProdutos(termo) {
+      if (!termo || termo.length < 2) return [];
 
-      if (!produtoId) {
-        alert('Selecione um produto antes de adicionar.');
+      const termoLower = termo.toLowerCase();
+      return produtosData.filter(p =>
+        p.ref.toLowerCase().includes(termoLower) ||
+        p.descricao.toLowerCase().includes(termoLower)
+      ).slice(0, 15); // Limita a 15 resultados
+    }
+
+    // Renderiza resultados da busca
+    function renderizarResultados(produtos) {
+      if (produtos.length === 0) {
+        searchResults.innerHTML = '<div class="produto-search-empty">Nenhum produto encontrado</div>';
+        searchResults.classList.add('active');
         return;
       }
 
+      searchResults.innerHTML = produtos.map(p => `
+        <div class="produto-search-item" data-id="${p.id}">
+          <span class="produto-ref">${p.ref}</span>
+          <span class="produto-desc">${p.descricao}</span>
+          <span class="produto-preco">R$ ${p.precoUnidade}</span>
+        </div>
+      `).join('');
+
+      searchResults.classList.add('active');
+
+      // Adiciona evento de clique em cada item
+      searchResults.querySelectorAll('.produto-search-item').forEach(item => {
+        item.addEventListener('click', () => {
+          const produtoId = item.dataset.id;
+          adicionarProduto(produtoId);
+        });
+      });
+    }
+
+    // Adiciona produto à tabela
+    function adicionarProduto(produtoId) {
       const produto = produtosData.find(p => p.id == produtoId);
       if (produto) {
         const next = tbody.querySelectorAll('tr').length + 1;
         tbody.appendChild(makeRow(next, produto));
         recalc();
 
-        // Reseta o dropdown
-        selectProduto.value = '';
+        // Limpa a busca
+        buscaProduto.value = '';
+        searchResults.classList.remove('active');
+        searchResults.innerHTML = '';
       }
     }
 
-    // Event listener para o botão de adicionar produto
-    addProdutoBtn.addEventListener('click', addProdutoSelecionado);
+    // Event listener para busca
+    buscaProduto.addEventListener('input', (e) => {
+      const termo = e.target.value.trim();
 
-    // Também permite adicionar ao pressionar Enter no dropdown
-    selectProduto.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
+      if (termo.length < 2) {
+        searchResults.classList.remove('active');
+        searchResults.innerHTML = '';
+        return;
+      }
+
+      const resultados = filtrarProdutos(termo);
+      renderizarResultados(resultados);
+    });
+
+    // Fecha resultados ao clicar fora
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.produto-search-container')) {
+        searchResults.classList.remove('active');
+      }
+    });
+
+    // Navegação por teclado
+    buscaProduto.addEventListener('keydown', (e) => {
+      const items = searchResults.querySelectorAll('.produto-search-item');
+      const activeItem = searchResults.querySelector('.produto-search-item.active');
+
+      if (e.key === 'ArrowDown') {
         e.preventDefault();
-        addProdutoSelecionado();
+        if (!activeItem && items.length > 0) {
+          items[0].classList.add('active');
+        } else if (activeItem && activeItem.nextElementSibling) {
+          activeItem.classList.remove('active');
+          activeItem.nextElementSibling.classList.add('active');
+        }
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (activeItem && activeItem.previousElementSibling) {
+          activeItem.classList.remove('active');
+          activeItem.previousElementSibling.classList.add('active');
+        }
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (activeItem) {
+          adicionarProduto(activeItem.dataset.id);
+        } else if (items.length === 1) {
+          adicionarProduto(items[0].dataset.id);
+        }
+      } else if (e.key === 'Escape') {
+        searchResults.classList.remove('active');
       }
     });
 

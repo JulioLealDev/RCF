@@ -299,7 +299,7 @@
     {
       "id": 38,
       "ref": "3625",
-      "descricao": "MARTELO BOLA 800 GRS C/CABO ENCERado",
+      "descricao": "MARTELO BOLA 800 GRS C/CABO ENCERADO",
       "precoUnidade": "19,12",
       "precoEmbalagem": "229,44",
       "embalagem": "CX12"
@@ -319,6 +319,1166 @@
       "precoUnidade": "8,28",
       "precoEmbalagem": "99,36",
       "embalagem": "CX12"
+    },
+    {
+      "id": 41,
+      "ref": "3347",
+      "descricao": "ROLDANA N.08 - (23mm x 80mm) - 50 kg",
+      "precoUnidade": "13,19",
+      "precoEmbalagem": "158,28",
+      "embalagem": "CX12"
+    },
+    {
+      "id": 42,
+      "ref": "3321",
+      "descricao": "ROLDANA N.10 - (24mm x 100mm) - 80 kg",
+      "precoUnidade": "14,69",
+      "precoEmbalagem": "176,28",
+      "embalagem": "CX12"
+    },
+    {
+      "id": 43,
+      "ref": "3322",
+      "descricao": "ROLDANA N.12 - (25mm x 120mm) -100 kg",
+      "precoUnidade": "20,31",
+      "precoEmbalagem": "162,48",
+      "embalagem": "CX08"
+    },
+    {
+      "id": 44,
+      "ref": "3323",
+      "descricao": "ROLDANA N.14 - (25mm x 140mm) -100 kg",
+      "precoUnidade": "26,91",
+      "precoEmbalagem": "161,46",
+      "embalagem": "CX06"
+    },
+    {
+      "id": 45,
+      "ref": "3333",
+      "descricao": "ROLDANA N.16 - (27mm x 160mm) -100 kg",
+      "precoUnidade": "35,76",
+      "precoEmbalagem": "214,56",
+      "embalagem": "CX06"
+    },
+    {
+      "id": 46,
+      "ref": "3334",
+      "descricao": "ROLDANA N.18 - (32mm x 180mm) -130 kg",
+      "precoUnidade": "45,74",
+      "precoEmbalagem": "274,44",
+      "embalagem": "CX06"
+    },
+    {
+      "id": 47,
+      "ref": "3335",
+      "descricao": "ROLDANA N.20 - (34mm x 200mm) -150 kg",
+      "precoUnidade": "58,35",
+      "precoEmbalagem": "350,10",
+      "embalagem": "CX06"
+    },
+    {
+      "id": 48,
+      "ref": "3326",
+      "descricao": "CHAVE VIRAR FERRO 3/16 - (286 X 35 x 8mm)",
+      "precoUnidade": "6,66",
+      "precoEmbalagem": "66,60",
+      "embalagem": "CX10"
+    },
+    {
+      "id": 49,
+      "ref": "3327",
+      "descricao": "CHAVE VIRAR FERRO 1/4 - (286 x 35 x 8mm)",
+      "precoUnidade": "6,84",
+      "precoEmbalagem": "68,40",
+      "embalagem": "CX10"
+    },
+    {
+      "id": 50,
+      "ref": "3328",
+      "descricao": "CHAVE VIRAR FERRO 5/16 - (286 x 35 x 9mm)",
+      "precoUnidade": "7,98",
+      "precoEmbalagem": "79,80",
+      "embalagem": "CX10"
+    },
+    {
+      "id": 51,
+      "ref": "3329",
+      "descricao": "CHAVE VIRAR FERRO 3/8 - (286 x 35 x 10mm)",
+      "precoUnidade": "9,04",
+      "precoEmbalagem": "72,32",
+      "embalagem": "CX08"
+    },
+    {
+      "id": 52,
+      "ref": "3330",
+      "descricao": "CHAVE VIRAR FERRO 1/2 - (286 x 40 x 16mm)",
+      "precoUnidade": "13,07",
+      "precoEmbalagem": "104,56",
+      "embalagem": "CX08"
+    },
+    {
+      "id": 53,
+      "ref": "3331",
+      "descricao": "CHAVE VIRAR FERRO 5/8 - (286 x 45 x 16mm)",
+      "precoUnidade": "16,32",
+      "precoEmbalagem": "130,56",
+      "embalagem": "CX08"
+    },
+    {
+      "id": 54,
+      "ref": "3332",
+      "descricao": "CHAVE VIRAR FERRO 3/4 - (286 x 50 x 20mm)",
+      "precoUnidade": "20,70",
+      "precoEmbalagem": "124,20",
+      "embalagem": "CX06"
+    },
+    {
+      "id": 55,
+      "ref": "3290",
+      "descricao": "CAVADEIRA ARTIC. COM CABO - Cabo 1.20mt",
+      "precoUnidade": "26,31",
+      "precoEmbalagem": "52,62",
+      "embalagem": "AM02"
+    },
+    {
+      "id": 56,
+      "ref": "3894",
+      "descricao": "CAVADEIRA ARTIC. SEM CABO",
+      "precoUnidade": "18,41",
+      "precoEmbalagem": "36,82",
+      "embalagem": "AM02"
+    },
+    {
+      "id": 57,
+      "ref": "3895",
+      "descricao": "CAVADEIRA ARTICULADA LIGHT- (1.78x23x16)",
+      "precoUnidade": "118,42",
+      "precoEmbalagem": "236,84",
+      "embalagem": "AM02"
+    },
+    {
+      "id": 58,
+      "ref": "3228",
+      "descricao": "CAVADEIRA RETA SEM CABO",
+      "precoUnidade": "15,35",
+      "precoEmbalagem": "184,20",
+      "embalagem": "CX12"
+    },
+    {
+      "id": 59,
+      "ref": "3242",
+      "descricao": "CAVADEIRA RETA COM CABO - Cabo 1.20mt",
+      "precoUnidade": "27,90",
+      "precoEmbalagem": "55,80",
+      "embalagem": "AM02"
+    },
+    {
+      "id": 60,
+      "ref": "3901",
+      "descricao": "CAVADEIRA RETA MACIÇA SOQUETE 1\"x1,50",
+      "precoUnidade": "81,65",
+      "precoEmbalagem": "163,30",
+      "embalagem": "AM02"
+    },
+    {
+      "id": 61,
+      "ref": "3902",
+      "descricao": "CAVADEIRA RETA MACIÇA SOQUETE 1\"x1,80",
+      "precoUnidade": "92,90",
+      "precoEmbalagem": "185,80",
+      "embalagem": "AM02"
+    },
+    {
+      "id": 62,
+      "ref": "3903",
+      "descricao": "CAVADEIRA RETA MACIÇA SOQUETE 3/4x1,50",
+      "precoUnidade": "53,28",
+      "precoEmbalagem": "106,56",
+      "embalagem": "AM02"
+    },
+    {
+      "id": 63,
+      "ref": "3904",
+      "descricao": "CAVADEIRA RETA MACIÇA SOQUETE 3/4x1,80",
+      "precoUnidade": "60,80",
+      "precoEmbalagem": "121,60",
+      "embalagem": "AM02"
+    },
+    {
+      "id": 64,
+      "ref": "3905",
+      "descricao": "CAVADEIRA RETA MACIÇA SOQUETE 7/8x1,50",
+      "precoUnidade": "65,77",
+      "precoEmbalagem": "131,54",
+      "embalagem": "AM02"
+    },
+    {
+      "id": 65,
+      "ref": "3906",
+      "descricao": "CAVADEIRA RETA MACIÇA SOQUETE 7/8x1,80",
+      "precoUnidade": "76,72",
+      "precoEmbalagem": "153,44",
+      "embalagem": "AM02"
+    },
+    {
+      "id": 66,
+      "ref": "3907",
+      "descricao": "PÁ DE BICO S/CABO 04 FORJADA - aço 1045",
+      "precoUnidade": "43,42",
+      "precoEmbalagem": "260,52",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 67,
+      "ref": "3908",
+      "descricao": "PÁ QUADRADA S/CABO 04 FORJ.-aço 1045",
+      "precoUnidade": "46,84",
+      "precoEmbalagem": "281,04",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 68,
+      "ref": "3852",
+      "descricao": "PÁ BICO 04 aço 1020 C/CABO Y(polipropileno)",
+      "precoUnidade": "26,58",
+      "precoEmbalagem": "159,48",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 69,
+      "ref": "3854",
+      "descricao": "PÁ BICO 04 aço 1020 COM CABO RETO",
+      "precoUnidade": "26,22",
+      "precoEmbalagem": "157,32",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 70,
+      "ref": "3856",
+      "descricao": "PÁ BICO 04 aço 1020 SEM CABO",
+      "precoUnidade": "21,05",
+      "precoEmbalagem": "126,30",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 71,
+      "ref": "3236",
+      "descricao": "DESEMP. AÇO LISA - (255 x 120mm)",
+      "precoUnidade": "8,42",
+      "precoEmbalagem": "101,04",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 72,
+      "ref": "3237",
+      "descricao": "DESEMP. AÇO DENTADA - (255 x 120mm)",
+      "precoUnidade": "9,18",
+      "precoEmbalagem": "110,16",
+      "embalagem": "CX12"
+    },
+    {
+      "id": 73,
+      "ref": "3909",
+      "descricao": "FOICE COM CABO - (380 x 175mm)",
+      "precoUnidade": "43,16",
+      "precoEmbalagem": "86,32",
+      "embalagem": "AM02"
+    },
+    {
+      "id": 74,
+      "ref": "3910",
+      "descricao": "FOICE SEM CABO - (380 x 175mm)",
+      "precoUnidade": "34,47",
+      "precoEmbalagem": "206,82",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 75,
+      "ref": "3911",
+      "descricao": "MACHADO SEM CABO - 3,5 - (140 x 195mm)",
+      "precoUnidade": "49,12",
+      "precoEmbalagem": "294,72",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 76,
+      "ref": "3912",
+      "descricao": "ENXADA LARGA S/CABO - 2,5",
+      "precoUnidade": "30,76",
+      "precoEmbalagem": "184,56",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 77,
+      "ref": "3913",
+      "descricao": "ENXADA ARGAMASSA S/CABO- 2,5",
+      "precoUnidade": "27,45",
+      "precoEmbalagem": "164,70",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 78,
+      "ref": "3914",
+      "descricao": "ENXADA ESTREITA SEM CABO - 2,5",
+      "precoUnidade": "30,76",
+      "precoEmbalagem": "184,56",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 79,
+      "ref": "3915",
+      "descricao": "ENXADA JARDIM - (180 x 160mm)",
+      "precoUnidade": "20,73",
+      "precoEmbalagem": "124,38",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 80,
+      "ref": "3916",
+      "descricao": "ENXADA LARGO S/CABO - 2,5",
+      "precoUnidade": "31,58",
+      "precoEmbalagem": "189,48",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 81,
+      "ref": "3917",
+      "descricao": "ENXADA ESTREITO S/CABO - 2,5",
+      "precoUnidade": "27,81",
+      "precoEmbalagem": "166,86",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 82,
+      "ref": "4078",
+      "descricao": "ENXADÃO ESTREITO SEM CABO",
+      "precoUnidade": "16,66",
+      "precoEmbalagem": "99,96",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 83,
+      "ref": "4079",
+      "descricao": "ENXADÃO ESTREITO COM CABO 1.20mt",
+      "precoUnidade": "23,24",
+      "precoEmbalagem": "46,48",
+      "embalagem": "AM02"
+    },
+    {
+      "id": 84,
+      "ref": "4080",
+      "descricao": "ENXADÃO ESTREITO COM CABO 1.50mt",
+      "precoUnidade": "24,03",
+      "precoEmbalagem": "48,06",
+      "embalagem": "AM02"
+    },
+    {
+      "id": 85,
+      "ref": "3997",
+      "descricao": "ALAVANCA 1 x 0,80 LISA",
+      "precoUnidade": "52,63",
+      "precoEmbalagem": "105,26",
+      "embalagem": "AM02"
+    },
+    {
+      "id": 86,
+      "ref": "3918",
+      "descricao": "ALAVANCA 1 x 1,50 LISA",
+      "precoUnidade": "75,87",
+      "precoEmbalagem": "151,74",
+      "embalagem": "AM02"
+    },
+    {
+      "id": 87,
+      "ref": "3919",
+      "descricao": "ALAVANCA 1 x 1,80 LISA",
+      "precoUnidade": "85,97",
+      "precoEmbalagem": "171,94",
+      "embalagem": "AM02"
+    },
+    {
+      "id": 88,
+      "ref": "3920",
+      "descricao": "ALAVANCA 1 x 2,00 LISA",
+      "precoUnidade": "93,59",
+      "precoEmbalagem": "187,18",
+      "embalagem": "AM02"
+    },
+    {
+      "id": 89,
+      "ref": "3921",
+      "descricao": "ALAVANCA 7/8 x 1,50 LISA",
+      "precoUnidade": "62,72",
+      "precoEmbalagem": "125,44",
+      "embalagem": "AM02"
+    },
+    {
+      "id": 90,
+      "ref": "3922",
+      "descricao": "ALAVANCA 7/8 x 1,80 LISA",
+      "precoUnidade": "71,23",
+      "precoEmbalagem": "142,46",
+      "embalagem": "AM02"
+    },
+    {
+      "id": 91,
+      "ref": "3923",
+      "descricao": "ALAVANCA 7/8 x 2,00 LISA",
+      "precoUnidade": "76,49",
+      "precoEmbalagem": "152,98",
+      "embalagem": "AM02"
+    },
+    {
+      "id": 92,
+      "ref": "3924",
+      "descricao": "ALAVANCA 3/4 x 1,50 LISA",
+      "precoUnidade": "51,67",
+      "precoEmbalagem": "103,34",
+      "embalagem": "AM02"
+    },
+    {
+      "id": 93,
+      "ref": "3925",
+      "descricao": "ALAVANCA 3/4 x 1,80 LISA",
+      "precoUnidade": "56,84",
+      "precoEmbalagem": "113,68",
+      "embalagem": "AM02"
+    },
+    {
+      "id": 94,
+      "ref": "3926",
+      "descricao": "ALAVANCA 3/4 x 2,00 LISA",
+      "precoUnidade": "61,23",
+      "precoEmbalagem": "122,46",
+      "embalagem": "AM02"
+    },
+    {
+      "id": 95,
+      "ref": "3927",
+      "descricao": "PONTEIRO 1\" x 30 NERVURADO",
+      "precoUnidade": "18,59",
+      "precoEmbalagem": "111,54",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 96,
+      "ref": "3928",
+      "descricao": "PONTEIRO 1\" x 40 NERVURADO",
+      "precoUnidade": "20,35",
+      "precoEmbalagem": "122,10",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 97,
+      "ref": "3929",
+      "descricao": "PONTEIRO 3/4 x 20 NERVURADO",
+      "precoUnidade": "10,23",
+      "precoEmbalagem": "61,38",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 98,
+      "ref": "3930",
+      "descricao": "PONTEIRO 3/4 x 25 NERVURADO",
+      "precoUnidade": "11,49",
+      "precoEmbalagem": "68,94",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 99,
+      "ref": "3931",
+      "descricao": "PONTEIRO 3/4 x 30 NERVURADO",
+      "precoUnidade": "12,54",
+      "precoEmbalagem": "75,24",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 100,
+      "ref": "3932",
+      "descricao": "PONTEIRO 5/8 x 20 NERVURADO",
+      "precoUnidade": "7,28",
+      "precoEmbalagem": "43,68",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 101,
+      "ref": "3933",
+      "descricao": "PONTEIRO 5/8 x 25 NERVURADO",
+      "precoUnidade": "8,15",
+      "precoEmbalagem": "48,90",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 102,
+      "ref": "3934",
+      "descricao": "PONTEIRO 5/8 x 30 NERVURADO",
+      "precoUnidade": "8,77",
+      "precoEmbalagem": "52,62",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 103,
+      "ref": "4059",
+      "descricao": "PONTEIRO 1\" x 30 LISO",
+      "precoUnidade": "19,82",
+      "precoEmbalagem": "118,92",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 104,
+      "ref": "4060",
+      "descricao": "PONTEIRO 1\" x 40 LISO",
+      "precoUnidade": "23,16",
+      "precoEmbalagem": "138,96",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 105,
+      "ref": "4061",
+      "descricao": "PONTEIRO 3/4 x 20 LISO",
+      "precoUnidade": "11,22",
+      "precoEmbalagem": "67,32",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 106,
+      "ref": "4062",
+      "descricao": "PONTEIRO 3/4 x 25 LISO",
+      "precoUnidade": "11,75",
+      "precoEmbalagem": "70,50",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 107,
+      "ref": "4063",
+      "descricao": "PONTEIRO 3/4 x 30 LISO",
+      "precoUnidade": "12,71",
+      "precoEmbalagem": "76,26",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 108,
+      "ref": "4064",
+      "descricao": "PONTEIRO 5/8 x 20 LISO",
+      "precoUnidade": "7,45",
+      "precoEmbalagem": "44,70",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 109,
+      "ref": "4065",
+      "descricao": "PONTEIRO 5/8 x 25 LISO",
+      "precoUnidade": "8,33",
+      "precoEmbalagem": "49,98",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 110,
+      "ref": "4066",
+      "descricao": "PONTEIRO 5/8 x 30 LISO",
+      "precoUnidade": "9,47",
+      "precoEmbalagem": "56,82",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 111,
+      "ref": "3935",
+      "descricao": "TALHADEIRA REDONDA 1\" x 30 NERVURADO",
+      "precoUnidade": "18,33",
+      "precoEmbalagem": "109,98",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 112,
+      "ref": "3936",
+      "descricao": "TALHADEIRA REDONDA 1\" x 40 NERVURADO",
+      "precoUnidade": "21,58",
+      "precoEmbalagem": "129,48",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 113,
+      "ref": "3937",
+      "descricao": "TALHADEIRA REDONDA 3/4x20 NERVURADO",
+      "precoUnidade": "10,26",
+      "precoEmbalagem": "61,56",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 114,
+      "ref": "3938",
+      "descricao": "TALHADEIRA REDONDA 3/4x25 NERVURADO",
+      "precoUnidade": "11,40",
+      "precoEmbalagem": "68,40",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 115,
+      "ref": "3939",
+      "descricao": "TALHADEIRA REDONDA 3/4x30 NERVURADO",
+      "precoUnidade": "12,46",
+      "precoEmbalagem": "74,76",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 116,
+      "ref": "3940",
+      "descricao": "TALHADEIRA REDONDA 5/8x20 NERVURADO",
+      "precoUnidade": "7,02",
+      "precoEmbalagem": "42,12",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 117,
+      "ref": "3941",
+      "descricao": "TALHADEIRA REDONDA 5/8x25 NERVURADO",
+      "precoUnidade": "7,89",
+      "precoEmbalagem": "47,34",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 118,
+      "ref": "3942",
+      "descricao": "TALHADEIRA REDONDA 5/8x30 NERVURADO",
+      "precoUnidade": "8,60",
+      "precoEmbalagem": "51,60",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 119,
+      "ref": "4067",
+      "descricao": "TALHADEIRA REDONDA 1\" x 30 LISA",
+      "precoUnidade": "19,65",
+      "precoEmbalagem": "117,90",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 120,
+      "ref": "4068",
+      "descricao": "TALHADEIRA REDONDA 1\" x 40 LISA",
+      "precoUnidade": "23,07",
+      "precoEmbalagem": "138,42",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 121,
+      "ref": "4069",
+      "descricao": "TALHADEIRA REDONDA 3/4 x 20 LISA",
+      "precoUnidade": "10,70",
+      "precoEmbalagem": "64,20",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 122,
+      "ref": "4070",
+      "descricao": "TALHADEIRA REDONDA 3/4 x 25 LISA",
+      "precoUnidade": "12,19",
+      "precoEmbalagem": "73,14",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 123,
+      "ref": "4071",
+      "descricao": "TALHADEIRA REDONDA 3/4 x 30 LISA",
+      "precoUnidade": "13,07",
+      "precoEmbalagem": "78,42",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 124,
+      "ref": "4072",
+      "descricao": "TALHADEIRA REDONDA 5/8 x 20 LISA",
+      "precoUnidade": "7,45",
+      "precoEmbalagem": "44,70",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 125,
+      "ref": "4073",
+      "descricao": "TALHADEIRA REDONDA 5/8 x 25 LISA",
+      "precoUnidade": "8,33",
+      "precoEmbalagem": "49,98",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 126,
+      "ref": "4074",
+      "descricao": "TALHADEIRA REDONDA 5/8 x 30 LISA",
+      "precoUnidade": "8,94",
+      "precoEmbalagem": "53,64",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 127,
+      "ref": "3943",
+      "descricao": "PÉ DE CABRA 3/4 x 60 NERVURADO",
+      "precoUnidade": "21,98",
+      "precoEmbalagem": "131,88",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 128,
+      "ref": "3944",
+      "descricao": "PÉ DE CABRA 3/4 x 70 NERVURADO",
+      "precoUnidade": "24,72",
+      "precoEmbalagem": "148,32",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 129,
+      "ref": "3945",
+      "descricao": "PÉ DE CABRA 3/4 x 80 NERVURADO",
+      "precoUnidade": "26,20",
+      "precoEmbalagem": "157,20",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 130,
+      "ref": "3946",
+      "descricao": "PÉ DE CABRA 3/4 x 60 LISO",
+      "precoUnidade": "24,13",
+      "precoEmbalagem": "144,78",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 131,
+      "ref": "3947",
+      "descricao": "PÉ DE CABRA 5/8 x 40 NERVURADO",
+      "precoUnidade": "13,83",
+      "precoEmbalagem": "82,98",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 132,
+      "ref": "3948",
+      "descricao": "PÉ DE CABRA 5/8 x 50 NERVURADO",
+      "precoUnidade": "15,09",
+      "precoEmbalagem": "90,54",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 133,
+      "ref": "3636",
+      "descricao": "PORCA DE ANCORAGEM 5/8\" - 75mm",
+      "precoUnidade": "5,83",
+      "precoEmbalagem": "291,50",
+      "embalagem": "SC50"
+    },
+    {
+      "id": 134,
+      "ref": "4091",
+      "descricao": "PORCA DE ANCORAGEM 1/2\" - 75mm",
+      "precoUnidade": "7,31",
+      "precoEmbalagem": "365,50",
+      "embalagem": "SC50"
+    },
+    {
+      "id": 135,
+      "ref": "3499",
+      "descricao": "PORCA ANCORAGEM 5/8\" GRANDE - 100mm",
+      "precoUnidade": "11,64",
+      "precoEmbalagem": "349,20",
+      "embalagem": "SC30"
+    },
+    {
+      "id": 136,
+      "ref": "3573",
+      "descricao": "PORCA ANCORAGEM 3/4\" GRANDE - 100mm",
+      "precoUnidade": "15,89",
+      "precoEmbalagem": "397,25",
+      "embalagem": "SC25"
+    },
+    {
+      "id": 137,
+      "ref": "3414",
+      "descricao": "LUVA DE VEDAÇÃO 5/8\"",
+      "precoUnidade": "5,83",
+      "precoEmbalagem": "291,50",
+      "embalagem": "SC50"
+    },
+    {
+      "id": 138,
+      "ref": "3689",
+      "descricao": "LUVA DE VEDAÇÃO 3/4\"",
+      "precoUnidade": "5,83",
+      "precoEmbalagem": "291,50",
+      "embalagem": "SC50"
+    },
+    {
+      "id": 139,
+      "ref": "3413",
+      "descricao": "MEIA LUVA DE VEDAÇÃO 5/8\"",
+      "precoUnidade": "4,07",
+      "precoEmbalagem": "203,50",
+      "embalagem": "SC50"
+    },
+    {
+      "id": 140,
+      "ref": "3416",
+      "descricao": "PORCA BORBOLETA 1 1/4\" NORMAL - 4 FIOS",
+      "precoUnidade": "8,48",
+      "precoEmbalagem": "254,40",
+      "embalagem": "SC30"
+    },
+    {
+      "id": 141,
+      "ref": "3634",
+      "descricao": "PORCA BORB. 1 1/4\" ROSCA TUBO - 5 FIOS",
+      "precoUnidade": "8,48",
+      "precoEmbalagem": "254,40",
+      "embalagem": "SC30"
+    },
+    {
+      "id": 142,
+      "ref": "3433",
+      "descricao": "PORCA BORBOLETA 1 1/4\" MODELO S",
+      "precoUnidade": "8,48",
+      "precoEmbalagem": "254,40",
+      "embalagem": "SC30"
+    },
+    {
+      "id": 143,
+      "ref": "3479",
+      "descricao": "TENSOR DE FORMA",
+      "precoUnidade": "8,28",
+      "precoEmbalagem": "414,00",
+      "embalagem": "SC50"
+    },
+    {
+      "id": 144,
+      "ref": "3466",
+      "descricao": "BIGORNA N.10 (PESO 10,00 KG)",
+      "precoUnidade": "220,93",
+      "precoEmbalagem": "220,93",
+      "embalagem": "Avulso"
+    },
+    {
+      "id": 145,
+      "ref": "3467",
+      "descricao": "BIGORNA N.20 (PESO 20,00 KG)",
+      "precoUnidade": "238,60",
+      "precoEmbalagem": "311,90",
+      "embalagem": "Avulso"
+    },
+    {
+      "id": 146,
+      "ref": "3468",
+      "descricao": "BIGORNA N.30 (PESO 30,00 KG)",
+      "precoUnidade": "473,69",
+      "precoEmbalagem": "438,61",
+      "embalagem": "Avulso"
+    },
+    {
+      "id": 147,
+      "ref": "3469",
+      "descricao": "BIGORNA N.40 (PESO 40,00 KG)",
+      "precoUnidade": "636,87",
+      "precoEmbalagem": "589,69",
+      "embalagem": "Avulso"
+    },
+    {
+      "id": 148,
+      "ref": "3471",
+      "descricao": "BIGORNA N.60 (PESO 60,00 KG)",
+      "precoUnidade": "936,88",
+      "precoEmbalagem": "867,48",
+      "embalagem": "Avulso"
+    },
+    {
+      "id": 149,
+      "ref": "3949",
+      "descricao": "CABO MARRETA 1/2 KG - ENCERADO",
+      "precoUnidade": "2,80",
+      "precoEmbalagem": "33,60",
+      "embalagem": "AM12"
+    },
+    {
+      "id": 150,
+      "ref": "3950",
+      "descricao": "CABO MARRETA 1,00 /1,50/2,00KG-ENCERADO",
+      "precoUnidade": "2,80",
+      "precoEmbalagem": "33,60",
+      "embalagem": "AM12"
+    },
+    {
+      "id": 151,
+      "ref": "3951",
+      "descricao": "CABO MARRETA 3,00 KG - (385 mm)",
+      "precoUnidade": "3,60",
+      "precoEmbalagem": "43,20",
+      "embalagem": "AM12"
+    },
+    {
+      "id": 152,
+      "ref": "3952",
+      "descricao": "CABO MARRETA 5,00/6,00 KG - (800 mm)",
+      "precoUnidade": "6,13",
+      "precoEmbalagem": "73,56",
+      "embalagem": "AM12"
+    },
+    {
+      "id": 153,
+      "ref": "3953",
+      "descricao": "CABO MARRETA 8,00/10,00 KG/Borracheiro",
+      "precoUnidade": "6,13",
+      "precoEmbalagem": "73,56",
+      "embalagem": "AM12"
+    },
+    {
+      "id": 154,
+      "ref": "3954",
+      "descricao": "CABO MARTELO 23 - BOLA 300g ENCERADO",
+      "precoUnidade": "3,15",
+      "precoEmbalagem": "37,80",
+      "embalagem": "AM12"
+    },
+    {
+      "id": 155,
+      "ref": "3955",
+      "descricao": "CABO MARTELO 25/27 - 500/800 g ENCERADO",
+      "precoUnidade": "3,15",
+      "precoEmbalagem": "37,80",
+      "embalagem": "AM12"
+    },
+    {
+      "id": 156,
+      "ref": "3956",
+      "descricao": "CABO MARTELO 29 - ENCERADO",
+      "precoUnidade": "3,15",
+      "precoEmbalagem": "37,80",
+      "embalagem": "AM12"
+    },
+    {
+      "id": 157,
+      "ref": "3957",
+      "descricao": "CABO MARTELO 1 e 2 CORTE - ENCERADO",
+      "precoUnidade": "3,15",
+      "precoEmbalagem": "37,80",
+      "embalagem": "AM12"
+    },
+    {
+      "id": 158,
+      "ref": "3958",
+      "descricao": "CABO MACHADINHA - ENCERADO",
+      "precoUnidade": "3,15",
+      "precoEmbalagem": "37,80",
+      "embalagem": "AM12"
+    },
+    {
+      "id": 159,
+      "ref": "3959",
+      "descricao": "CABO PICARETA/CHIBANCA/ALVIÃO ENCERADO",
+      "precoUnidade": "11,35",
+      "precoEmbalagem": "68,10",
+      "embalagem": "AM06"
+    },
+    {
+      "id": 160,
+      "ref": "3960",
+      "descricao": "CABO RETO PÁ/CAVAD./FOICE - (1.20mt)",
+      "precoUnidade": "6,13",
+      "precoEmbalagem": "73,56",
+      "embalagem": "AM12"
+    },
+    {
+      "id": 161,
+      "ref": "3961",
+      "descricao": "CABO RETO ENXADA/ENXADÃO - (1.200 mm)",
+      "precoUnidade": "5,79",
+      "precoEmbalagem": "69,48",
+      "embalagem": "AM12"
+    },
+    {
+      "id": 162,
+      "ref": "3962",
+      "descricao": "CABO RETO ENXADA/ENXADÃO - (1.500 mm)",
+      "precoUnidade": "6,58",
+      "precoEmbalagem": "78,96",
+      "embalagem": "AM12"
+    },
+    {
+      "id": 163,
+      "ref": "3963",
+      "descricao": "CABO Y PARA PÁ (760mm)",
+      "precoUnidade": "7,71",
+      "precoEmbalagem": "92,52",
+      "embalagem": "AM12"
+    },
+    {
+      "id": 164,
+      "ref": "3964",
+      "descricao": "CABO PARA MACHADO - (975 mm)",
+      "precoUnidade": "9,12",
+      "precoEmbalagem": "109,44",
+      "embalagem": "AM12"
+    },
+    {
+      "id": 165,
+      "ref": "3965",
+      "descricao": "CABO PARA ANCINHO - (1.50 mt)",
+      "precoUnidade": "5,26",
+      "precoEmbalagem": "63,12",
+      "embalagem": "AM12"
+    },
+    {
+      "id": 166,
+      "ref": "4000",
+      "descricao": "CABO CAVADEIRA ARTICULADA (1.20mt)",
+      "precoUnidade": "5,79",
+      "precoEmbalagem": "69,48",
+      "embalagem": "AM12"
+    },
+    {
+      "id": 167,
+      "ref": "4001",
+      "descricao": "COLHER DE PEDREIRO 6\" - SOLDADA",
+      "precoUnidade": "7,90",
+      "precoEmbalagem": "47,40",
+      "embalagem": "CX06"
+    },
+    {
+      "id": 168,
+      "ref": "3966",
+      "descricao": "COLHER DE PEDREIRO 7\" - SOLDADA",
+      "precoUnidade": "8,15",
+      "precoEmbalagem": "48,90",
+      "embalagem": "CX06"
+    },
+    {
+      "id": 169,
+      "ref": "3967",
+      "descricao": "COLHER DE PEDREIRO 8\" - SOLDADA",
+      "precoUnidade": "8,94",
+      "precoEmbalagem": "53,64",
+      "embalagem": "CX06"
+    },
+    {
+      "id": 170,
+      "ref": "3968",
+      "descricao": "COLHER DE PEDREIRO 9\" - SOLDADA",
+      "precoUnidade": "9,91",
+      "precoEmbalagem": "59,46",
+      "embalagem": "CX06"
+    },
+    {
+      "id": 171,
+      "ref": "3969",
+      "descricao": "COLHER DE PEDREIRO 10\" - SOLDADA",
+      "precoUnidade": "10,96",
+      "precoEmbalagem": "65,76",
+      "embalagem": "CX06"
+    },
+    {
+      "id": 172,
+      "ref": "3970",
+      "descricao": "MARTELO AZULEJISTA BORRACHA 40mm",
+      "precoUnidade": "5,26",
+      "precoEmbalagem": "31,56",
+      "embalagem": "CX06"
+    },
+    {
+      "id": 173,
+      "ref": "3971",
+      "descricao": "MARTELO AZULEJISTA BORRACHA 60mm",
+      "precoUnidade": "10,26",
+      "precoEmbalagem": "61,56",
+      "embalagem": "CX06"
+    },
+    {
+      "id": 174,
+      "ref": "3972",
+      "descricao": "MARTELO AZULEJISTA BORRACHA 80mm",
+      "precoUnidade": "21,05",
+      "precoEmbalagem": "126,30",
+      "embalagem": "CX06"
+    },
+    {
+      "id": 175,
+      "ref": "3973",
+      "descricao": "MARTELO AZULEJISTA BORRACHA BCO 40mm",
+      "precoUnidade": "8,68",
+      "precoEmbalagem": "52,08",
+      "embalagem": "CX06"
+    },
+    {
+      "id": 176,
+      "ref": "3974",
+      "descricao": "MARTELO AZULEJISTA BORRACHA BCO 60mm",
+      "precoUnidade": "17,71",
+      "precoEmbalagem": "106,26",
+      "embalagem": "CX06"
+    },
+    {
+      "id": 177,
+      "ref": "4014",
+      "descricao": "PUNHO Y DE PLÁSTICO PARA PÁ",
+      "precoUnidade": "3,03",
+      "precoEmbalagem": "36,36",
+      "embalagem": "SC12"
+    },
+    {
+      "id": 178,
+      "ref": "4008",
+      "descricao": "PONTEIRA DE PLÁSTICO REDUTORA P/PICARETA",
+      "precoUnidade": "3,03",
+      "precoEmbalagem": "36,36",
+      "embalagem": "SC12"
+    },
+    {
+      "id": 179,
+      "ref": "3975",
+      "descricao": "ANCINHO 10 DENTES S/CABO",
+      "precoUnidade": "3,53",
+      "precoEmbalagem": "21,18",
+      "embalagem": "CX06"
+    },
+    {
+      "id": 180,
+      "ref": "3976",
+      "descricao": "ANCINHO 12 DENTES S/CABO",
+      "precoUnidade": "3,95",
+      "precoEmbalagem": "23,70",
+      "embalagem": "CX06"
+    },
+    {
+      "id": 181,
+      "ref": "3977",
+      "descricao": "ANCINHO 14 DENTES S/CABO",
+      "precoUnidade": "6,06",
+      "precoEmbalagem": "36,36",
+      "embalagem": "CX06"
+    },
+    {
+      "id": 182,
+      "ref": "3978",
+      "descricao": "ANCINHO 16 DENTES S/CABO",
+      "precoUnidade": "6,30",
+      "precoEmbalagem": "37,80",
+      "embalagem": "CX06"
+    },
+    {
+      "id": 183,
+      "ref": "3979",
+      "descricao": "ANCINHO 18 DENTES S/CABO",
+      "precoUnidade": "6,74",
+      "precoEmbalagem": "40,44",
+      "embalagem": "CX06"
+    },
+    {
+      "id": 184,
+      "ref": "3980",
+      "descricao": "ANCINHO 20 DENTES S/CABO",
+      "precoUnidade": "7,29",
+      "precoEmbalagem": "43,74",
+      "embalagem": "CX06"
+    },
+    {
+      "id": 185,
+      "ref": "4122",
+      "descricao": "EXPOSITOR TENACE",
+      "precoUnidade": "239,61",
+      "precoEmbalagem": "239,61",
+      "embalagem": "Avulso"
     }
   ]
 }
