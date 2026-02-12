@@ -594,11 +594,13 @@
       cursor: pointer;
     }
 
-    .radio-option input[type="radio"] {
+    .radio-option input[type="radio"],
+    .radio-option input[type="checkbox"] {
       width: 18px;
       height: 18px;
       accent-color: var(--primary);
       cursor: pointer;
+      flex-shrink: 0;
     }
 
     .radio-option span {
