@@ -1512,6 +1512,7 @@
 
     // Dicionário de embalagens (EMB) com seus valores numéricos
     const embValues = {
+      'Avulso': 1,
       'CX02': 2,
       'CX03': 3,
       'CX04': 4,
@@ -1526,7 +1527,11 @@
       'AM06': 6,
       'AM08': 8,
       'AM10': 10,
-      'AM12': 12
+      'AM12': 12,
+      'SC12': 12,
+      'SC25': 25,
+      'SC30': 30,
+      'SC50': 50
     };
 
     function brMoney(value) {
@@ -1694,6 +1699,7 @@
         <td class="col-und">
           <select data-col="und" class="text-center" ${disabledAttr}>
             <option value="">-</option>
+            <option value="Avulso" ${emb === 'Avulso' ? 'selected' : ''}>Avulso</option>
             <option value="CX02" ${emb === 'CX02' ? 'selected' : ''}>CX02</option>
             <option value="CX03" ${emb === 'CX03' ? 'selected' : ''}>CX03</option>
             <option value="CX04" ${emb === 'CX04' ? 'selected' : ''}>CX04</option>
@@ -1709,6 +1715,10 @@
             <option value="AM08" ${emb === 'AM08' ? 'selected' : ''}>AM08</option>
             <option value="AM10" ${emb === 'AM10' ? 'selected' : ''}>AM10</option>
             <option value="AM12" ${emb === 'AM12' ? 'selected' : ''}>AM12</option>
+            <option value="SC12" ${emb === 'SC12' ? 'selected' : ''}>SC12</option>
+            <option value="SC25" ${emb === 'SC25' ? 'selected' : ''}>SC25</option>
+            <option value="SC30" ${emb === 'SC30' ? 'selected' : ''}>SC30</option>
+            <option value="SC50" ${emb === 'SC50' ? 'selected' : ''}>SC50</option>
           </select>
         </td>
         <td class="col-ref"><input data-col="ref" type="text" value="${ref}" placeholder="REF" ${readonlyAttr} /></td>
