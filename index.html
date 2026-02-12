@@ -578,7 +578,7 @@
     /* Seção de entrega */
     .delivery-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
 
@@ -1051,14 +1051,14 @@
       .delivery-grid {
         gap: 10px;
         display: grid !important;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr);
         grid-template-rows: auto auto;
         align-items: center;
         padding: 0 16px 0 0;
       }
 
       /* Observações - ocupa linha inteira */
-      .delivery-grid .form-group:first-child {
+      .delivery-grid .form-group.span-3 {
         grid-column: 1 / -1;
         display: flex;
         align-items: center;
@@ -1383,7 +1383,7 @@
       </div>
 
       <div class="delivery-grid">
-        <div class="form-group">
+        <div class="form-group span-3">
           <label>Observações</label>
           <input id="obs" type="text" placeholder="Observações do pedido..." />
         </div>
@@ -1409,7 +1409,7 @@
           <div class="radio-group" style="margin-top: 8px;">
             <label class="radio-option">
               <input type="checkbox" id="desconto5" />
-              <span>Conceder Desconto 5%</span>
+              <span>Conceder 5%</span>
             </label>
           </div>
         </div>
