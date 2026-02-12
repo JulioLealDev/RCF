@@ -1892,7 +1892,7 @@
     // Carrega empresas do JSON
     async function carregarEmpresas() {
       try {
-        const response = await fetch('data/empresas.json');
+        const response = await fetch('data/empresas.json?v=' + Date.now());
         const data = await response.json();
         empresasData = data.empresas;
 
@@ -1981,7 +1981,7 @@
     // Carrega produtos do JSON
     async function carregarProdutos() {
       try {
-        const response = await fetch('data/produtos.json');
+        const response = await fetch('data/produtos.json?v=' + Date.now());
         const data = await response.json();
         produtosData = data.produtos;
       } catch (error) {
