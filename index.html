@@ -967,7 +967,8 @@
         text-overflow: clip !important;
       }
 
-      /* Ocultar linhas vazias */
+      /* Ocultar elementos na impressão */
+      .hide-print,
       .products-table tbody tr.hide-print {
         display: none !important;
       }
@@ -1051,7 +1052,7 @@
       .delivery-grid {
         gap: 10px;
         display: grid !important;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         grid-template-rows: auto auto;
         align-items: center;
         padding: 0 16px 0 0;
@@ -1404,14 +1405,11 @@
           <label>Pagamento</label>
           <input id="pagto" type="text" placeholder="Forma de pagamento" />
         </div>
-        <div class="form-group">
-          <label>Desconto</label>
-          <div class="radio-group" style="margin-top: 8px;">
-            <label class="radio-option">
-              <input type="checkbox" id="desconto5" />
-              <span>Conceder 5%</span>
-            </label>
-          </div>
+        <div class="form-group hide-print">
+          <label class="radio-option" style="cursor: pointer;">
+            <input type="checkbox" id="desconto5" />
+            <span>Conceder Desconto 5%</span>
+          </label>
         </div>
       </div>
     </div>
