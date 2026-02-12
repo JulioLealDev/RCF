@@ -794,45 +794,45 @@
       }
 
       .card-title {
-        font-size: 11px;
+        font-size: 9px;
       }
 
-      /* Header empresa - aumentado 50% */
+      /* Header empresa */
       .card:first-child {
-        padding: 12px 16px !important;
-        margin-bottom: 8px !important;
+        padding: 6px 10px !important;
+        margin-bottom: 4px !important;
       }
 
       .company-header {
-        grid-template-columns: 100px 1fr;
-        gap: 20px;
+        grid-template-columns: 60px 1fr;
+        gap: 10px;
         align-items: center;
       }
 
       .logo-box {
-        width: 90px;
-        height: 60px;
-        padding-left: 8px;
+        width: 55px;
+        height: 35px;
+        padding-left: 4px;
       }
 
       .company-info {
         text-align: center;
         align-items: center;
         justify-content: center;
-        gap: 4px;
+        gap: 2px;
       }
 
       .company-details {
         justify-content: center;
-        font-size: 13px;
-        gap: 20px;
+        font-size: 9px;
+        gap: 10px;
       }
 
       /* Card de informações do pedido na impressão */
       #cardInfo {
-        padding: 8px !important;
+        padding: 4px !important;
         border: 1px solid #aaa !important;
-        margin-bottom: 8px !important;
+        margin-bottom: 4px !important;
       }
 
       #cardInfo .card-header {
@@ -848,8 +848,8 @@
         display: table !important;
         width: 100%;
         border-collapse: collapse;
-        font-size: 11px;
-        line-height: 1.4;
+        font-size: 9px;
+        line-height: 1.2;
       }
 
       .print-info-table .print-row {
@@ -858,7 +858,7 @@
 
       .print-info-table .print-cell {
         display: table-cell;
-        padding: 6px 8px;
+        padding: 3px 4px;
         border: 1px solid #aaa;
         vertical-align: middle;
       }
@@ -867,17 +867,22 @@
         font-weight: 700;
         background: #eee !important;
         white-space: nowrap;
-        font-size: 10px;
+        font-size: 8px;
         text-transform: uppercase;
+        width: 1%;
       }
 
       .print-info-table .print-value {
-        font-size: 11px;
+        font-size: 9px;
+        word-break: break-word;
+        max-width: 100px;
       }
 
       .print-info-table .print-value span {
         display: block;
-        min-height: 14px;
+        min-height: 12px;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       /* Ocultar botões e elementos desnecessários */
@@ -911,35 +916,39 @@
       }
 
       .products-table {
-        font-size: 11px;
+        font-size: 9px;
         width: 100%;
-        table-layout: fixed;
+        table-layout: auto;
       }
 
       .products-table thead th {
-        padding: 8px 6px;
-        font-size: 10px;
+        padding: 4px 2px;
+        font-size: 8px;
         background: #eee !important;
         border-bottom: 1px solid #999;
         text-align: center;
+        white-space: nowrap;
       }
 
       .products-table tbody td {
-        padding: 6px 8px;
+        padding: 3px 2px;
         border-bottom: 1px solid #ddd;
         text-align: center;
+        white-space: nowrap;
       }
 
       .products-table input,
       .products-table select {
         border: none !important;
-        padding: 4px 6px;
-        font-size: 11px;
+        padding: 2px;
+        font-size: 9px;
         background: transparent !important;
         box-shadow: none !important;
         -webkit-appearance: none;
         appearance: none;
         text-align: center;
+        width: 100%;
+        min-width: 0;
       }
 
       .products-table input[readonly],
@@ -948,21 +957,28 @@
         font-weight: 600;
       }
 
-      .products-table .col-item { width: 6%; }
-      .products-table .col-und { width: 8%; }
-      .products-table .col-ref { width: 8%; }
-      .products-table .col-qtde-conj { width: 8%; }
-      .products-table .col-qtde { width: 8%; }
-      .products-table .col-desc { width: 32%; text-align: left !important; }
-      .products-table .col-pr-conj { width: 9%; }
-      .products-table .col-pr { width: 9%; }
-      .products-table .col-total { width: 12%; }
+      .products-table .col-item { width: 5%; }
+      .products-table .col-und { width: 7%; }
+      .products-table .col-ref { width: 7%; }
+      .products-table .col-qtde-conj { width: 7%; }
+      .products-table .col-qtde { width: 7%; }
+      .products-table .col-desc { width: auto; text-align: left !important; }
+      .products-table .col-pr-conj { width: 10%; }
+      .products-table .col-pr { width: 8%; }
+      .products-table .col-total { width: 10%; }
 
       .products-table .col-desc input {
         text-align: left !important;
-        white-space: normal !important;
-        overflow: visible !important;
-        text-overflow: clip !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+      }
+
+      .products-table .col-desc td {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 150px;
       }
 
       /* Ocultar elementos na impressão */
@@ -973,12 +989,12 @@
 
       /* Total bar */
       .total-bar {
-        padding: 8px 16px;
+        padding: 4px 10px;
         margin: 0;
         background: #f0f0f0 !important;
         border: 1px solid #aaa;
         border-top: none;
-        gap: 10px;
+        gap: 6px;
         flex-shrink: 0;
         border-radius: 0 !important;
         display: flex !important;
@@ -988,12 +1004,12 @@
       }
 
       .total-label {
-        font-size: 14px;
+        font-size: 10px;
         font-weight: 600;
       }
 
       .total-value {
-        font-size: 16px;
+        font-size: 12px;
         font-weight: 700;
         color: #000;
       }
@@ -1002,39 +1018,38 @@
         display: flex;
         flex-direction: column;
         align-items: flex-end;
-        gap: 2px;
+        gap: 1px;
       }
 
       .total-row {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 4px;
       }
 
       .total-label-sm {
-        font-size: 11px;
+        font-size: 9px;
         font-weight: 500;
         color: #333;
       }
 
       .total-value-sm {
-        font-size: 12px;
+        font-size: 10px;
         font-weight: 600;
         color: #000;
-        min-width: 80px;
+        min-width: 60px;
         text-align: right;
       }
 
-
       .total-final {
-        margin-top: 2px;
-        padding-top: 4px;
+        margin-top: 1px;
+        padding-top: 2px;
         border-top: 1px dashed #999;
       }
 
-      /* Seção entrega e pagamento - aumentada 100% */
+      /* Seção entrega e pagamento */
       .card:nth-child(4) {
-        padding: 12px 16px !important;
+        padding: 6px 10px !important;
         margin-bottom: 0 !important;
         border: 1px solid #aaa !important;
       }
@@ -1044,12 +1059,12 @@
       }
 
       .delivery-grid {
-        gap: 10px;
+        gap: 6px;
         display: grid !important;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: auto auto;
         align-items: center;
-        padding: 0 16px 0 0;
+        padding: 0 8px 0 0;
       }
 
       /* Observações - ocupa linha inteira */
@@ -1057,20 +1072,20 @@
         grid-column: 1 / -1;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 4px;
       }
 
       .delivery-grid .form-group {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 4px;
       }
 
       .delivery-grid .form-group label {
         display: inline;
-        font-size: 11px;
+        font-size: 8px;
         font-weight: 600;
-        margin-right: 8px;
+        margin-right: 4px;
         white-space: nowrap;
       }
 
@@ -1079,30 +1094,30 @@
         width: 100%;
         flex: 1;
         min-width: 0;
-        padding: 6px 10px !important;
-        font-size: 11px !important;
+        padding: 3px 6px !important;
+        font-size: 9px !important;
         border: 1px solid #aaa !important;
         overflow: visible !important;
         text-overflow: clip !important;
       }
 
       .radio-group {
-        gap: 12px;
+        gap: 8px;
         margin-top: 0 !important;
         display: inline-flex !important;
       }
 
       .radio-option {
-        gap: 4px;
+        gap: 2px;
       }
 
       .radio-option input[type="radio"] {
-        width: 14px;
-        height: 14px;
+        width: 10px;
+        height: 10px;
       }
 
       .radio-option span {
-        font-size: 11px;
+        font-size: 8px;
       }
     }
   </style>
