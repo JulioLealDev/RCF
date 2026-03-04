@@ -361,11 +361,13 @@
     .products-table .col-pr { width: 70px; text-align: right; }
     .products-table .col-pr-conj { width: 70px; text-align: right; }
     .products-table .col-total { width: 90px; text-align: right; }
-    .products-table .col-desc-valor { width: 70px; text-align: right; display: none; }
+    .products-table .col-desc-pct { width: 50px; text-align: center; display: none; }
+    .products-table .col-pr-final { width: 90px; text-align: right; display: none; }
     .products-table .col-action { width: 44px; text-align: center; }
 
-    /* Mostra coluna de desconto quando ativo */
-    .desconto-ativo .products-table .col-desc-valor { display: table-cell; }
+    /* Mostra colunas de desconto quando ativo */
+    .desconto-ativo .products-table .col-desc-pct { display: table-cell; }
+    .desconto-ativo .products-table .col-pr-final { display: table-cell; }
 
     .products-table input.text-center { text-align: center; }
     .products-table input.text-right { text-align: right; }
@@ -1052,10 +1054,12 @@
       .products-table .col-pr-conj { width: 10%; }
       .products-table .col-pr { width: 8%; }
       .products-table .col-total { width: 10%; }
-      .products-table .col-desc-valor { width: 8%; }
+      .products-table .col-desc-pct { width: 5%; }
+      .products-table .col-pr-final { width: 9%; }
 
-      /* Mostra coluna de desconto na impressão quando ativo */
-      .desconto-ativo .products-table .col-desc-valor { display: table-cell; }
+      /* Mostra colunas de desconto na impressão quando ativo */
+      .desconto-ativo .products-table .col-desc-pct { display: table-cell; }
+      .desconto-ativo .products-table .col-pr-final { display: table-cell; }
 
       .products-table .col-desc input {
         text-align: left !important;
@@ -1447,7 +1451,8 @@
               <th class="col-pr-conj">Pr. Emb.</th>
               <th class="col-pr">Pr. Und.</th>
               <th class="col-total">Total</th>
-              <th class="col-desc-valor">Desc.</th>
+              <th class="col-desc-pct">Desc.</th>
+              <th class="col-pr-final">Pr. Final</th>
               <th class="col-action"></th>
             </tr>
           </thead>
@@ -1673,13 +1678,16 @@
 
         tr.querySelector('[data-col="total"]').value = brMoney(total);
 
-        // Calcula e exibe o desconto individual do produto
-        const descValorInput = tr.querySelector('[data-col="desc-valor"]');
+        // Calcula e exibe o desconto e preço final do produto
+        const descPctInput = tr.querySelector('[data-col="desc-pct"]');
+        const prFinalInput = tr.querySelector('[data-col="pr-final"]');
         if (descontoAtivo && total > 0) {
-          const descontoProduto = total * 0.05;
-          descValorInput.value = brMoney(descontoProduto);
+          const precoFinal = total * 0.95; // total - 5%
+          descPctInput.value = '5%';
+          prFinalInput.value = brMoney(precoFinal);
         } else {
-          descValorInput.value = '';
+          descPctInput.value = '';
+          prFinalInput.value = '';
         }
 
         sum += total;
@@ -1757,7 +1765,8 @@
         <td class="col-pr-conj"><input data-col="pr-conj" type="text" inputmode="decimal" class="text-right" value="${prEmb}" placeholder="0,00" ${readonlyAttr} /></td>
         <td class="col-pr"><input data-col="pr" type="text" inputmode="decimal" class="text-right" value="${prUnd}" placeholder="0,00" ${readonlyAttr} /></td>
         <td class="col-total"><input data-col="total" type="text" value="0,00" class="text-right" readonly /></td>
-        <td class="col-desc-valor"><input data-col="desc-valor" type="text" value="" class="text-right" readonly /></td>
+        <td class="col-desc-pct"><input data-col="desc-pct" type="text" value="" class="text-center" readonly /></td>
+        <td class="col-pr-final"><input data-col="pr-final" type="text" value="" class="text-right" readonly /></td>
         <td class="col-action"><button class="btn-remove" type="button" title="Remover item">&times;</button></td>
       `;
 
