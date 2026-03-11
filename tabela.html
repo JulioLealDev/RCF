@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RCF</title>
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --bg: #c3d9ef;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --table-header: #f8fafc;
+      --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.05);
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    [data-theme="dark"] {
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --bg: #0f172a;
+      --card: #1e293b;
+      --border: #334155;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --table-header: #334155;
+      --shadow: 0 1px 3px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 24px 16px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    .title {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 700;
+      padding: 18px 24px;
+      border-radius: var(--radius);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .company-header {
+      display: grid;
+      grid-template-columns: 20% 60% 20%;
+      align-items: center;
+    }
+
+    .logo-box {
+      width: 100%;
+      max-width: 140px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      overflow: hidden;
+    }
+
+    .logo-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .company-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      text-align: center;
+    }
+
+    .company-details {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .header-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-header,
+    .btn-theme {
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-header {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .btn-header:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+
+    .btn-theme {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      background: var(--card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-theme:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .theme-icon {
+      font-size: 18px;
+      color: var(--text);
+      transition: all 0.2s ease;
+    }
+
+    .btn-theme:hover .theme-icon {
+      color: white;
+    }
+
+    .products-table-wrap {
+      overflow-x: auto;
+    }
+
+    .products-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 11px;
+      table-layout: fixed;
+    }
+
+    .products-table th,
+    .products-table td {
+      padding: 6px 4px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .products-table thead th {
+      background: var(--table-header);
+      font-weight: 600;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      color: var(--text-muted);
+      border-bottom: 2px solid var(--border);
+      white-space: nowrap;
+    }
+
+    .products-table th:nth-child(1),
+    .products-table td:nth-child(1) { width: 6%; }
+    .products-table th:nth-child(2),
+    .products-table td:nth-child(2) { width: 6%; }
+    .products-table th:nth-child(3),
+    .products-table td:nth-child(3) { width: 38%; }
+    .products-table th:nth-child(4),
+    .products-table td:nth-child(4) { width: 8%; }
+    .products-table th:nth-child(5),
+    .products-table td:nth-child(5) { width: 9%; text-align: right; }
+    .products-table th:nth-child(6),
+    .products-table td:nth-child(6) { width: 9%; text-align: right; }
+    .products-table th:nth-child(7),
+    .products-table td:nth-child(7) { width: 6%; text-align: center; }
+    .products-table th:nth-child(8),
+    .products-table td:nth-child(8) { width: 7%; text-align: center; }
+    .products-table th:nth-child(9),
+    .products-table td:nth-child(9) { width: 6%; text-align: center; }
+
+    @media (max-width: 768px) {
+      .company-header {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        text-align: center;
+      }
+
+      .logo-box {
+        margin: 0 auto;
+        justify-content: center;
+      }
+
+      .header-actions {
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 8mm;
+      }
+
+      body {
+        background: white;
+        color: black;
+      }
+
+      .container {
+        max-width: none;
+        padding: 0;
+      }
+
+      .card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+      }
+
+      .header-actions {
+        display: none;
+      }
+
+      .products-table th,
+      .products-table td {
+        font-size: 9px;
+        padding: 4px 3px;
+      }
+
+      .products-table thead th {
+        white-space: normal;
+        word-wrap: break-word;
+        font-size: 8px;
+        line-height: 1.2;
+      }
+
+      .products-table {
+        table-layout: fixed;
+      }
+
+      .products-table th:nth-child(1),
+      .products-table td:nth-child(1) { width: 7%; }
+      .products-table th:nth-child(2),
+      .products-table td:nth-child(2) { width: 7%; }
+      .products-table th:nth-child(3),
+      .products-table td:nth-child(3) { width: 36%; }
+      .products-table th:nth-child(4),
+      .products-table td:nth-child(4) { width: 9%; }
+      .products-table th:nth-child(5),
+      .products-table td:nth-child(5) { width: 9%; }
+      .products-table th:nth-child(6),
+      .products-table td:nth-child(6) { width: 9%; }
+      .products-table th:nth-child(7),
+      .products-table td:nth-child(7) { width: 6%; }
+      .products-table th:nth-child(8),
+      .products-table td:nth-child(8) { width: 8%; }
+      .products-table th:nth-child(9),
+      .products-table td:nth-child(9) { width: 7%; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="title">TABELA DE PREÇOS TENACE - VERSÃO 01-25</div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Produtos</div>
+      </div>
+
+      <div class="products-table-wrap">
+        <table class="products-table">
+          <thead>
+            <tr>
+              <th>COD. TAB.</th>
+              <th>COD. SIS.</th>
+              <th>PRODUTO</th>
+              <th>NCM</th>
+              <th>PR. UNI</th>
+              <th>PR. EMB</th>
+              <th>IPI</th>
+              <th>EMBAL.</th>
+              <th>ST-MG</th>
+            </tr>
+          </thead>
+          <tbody id="productTbody">
+            <!-- PICARETA / ALVIÃO / CHIBANCA / PICARETA SOCA -->
+            <tr style="background: var(--primary); color: white;"><td colspan="9" style="font-weight: 600; text-transform: uppercase;">PICARETA / ALVIÃO / CHIBANCA / PICARETA SOCA</td></tr>
+            <tr><td>1.000</td><td>3.222</td><td>PICARETA SEM CABO</td><td>82013000</td><td>R$ 28,06</td><td>R$ 168,37</td><td>0%</td><td>CX06</td><td>2,52%</td></tr>
+            <tr><td>1.001</td><td>3.220</td><td>ALVIÃO SEM CABO</td><td>82013000</td><td>R$ 31,71</td><td>R$ 190,26</td><td>0%</td><td>CX06</td><td>2,52%</td></tr>
+            <tr><td>1.002</td><td>3.221</td><td>CHIBANCA SEM CABO</td><td>82013000</td><td>R$ 31,71</td><td>R$ 190,26</td><td>0%</td><td>CX06</td><td>2,52%</td></tr>
+            <tr><td>1.003</td><td>3.223</td><td>SOCA P/ LASTRO SEM CABO</td><td>82013000</td><td>R$ 42,35</td><td>R$ 254,10</td><td>0%</td><td>CX06</td><td>2,52%</td></tr>
+            <tr><td>1.004</td><td>3.238</td><td>PICARETA COM CABO ENCERADO</td><td>82013000</td><td>R$ 47,16</td><td>R$ 94,32</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+            <tr><td>1.005</td><td>3.239</td><td>ALVIÃO COM CABO ENCERADO</td><td>82013000</td><td>R$ 51,05</td><td>R$ 102,10</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+            <tr><td>1.006</td><td>3.240</td><td>CHIBANCA COM CABO ENCERADO</td><td>82013000</td><td>R$ 51,05</td><td>R$ 102,10</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+            <tr><td>1.007</td><td>3.241</td><td>SOCA P/ LASTRO COM CABO ENCERADO</td><td>82013000</td><td>R$ 64,71</td><td>R$ 129,42</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+
+            <!-- MARRETAS OITAVADA EM FERRO FUNDIDO NODULAR -->
+            <tr style="background: var(--primary); color: white;"><td colspan="9" style="font-weight: 600; text-transform: uppercase;">MARRETAS OITAVADA EM FERRO FUNDIDO NODULAR</td></tr>
+            <tr><td>2.000</td><td>3.312</td><td>MARRETA 0,50 KG SEM CABO</td><td>82052000</td><td>R$ 8,24</td><td>R$ 164,84</td><td>5.20%</td><td>CX20</td><td>9,46%</td></tr>
+            <tr><td>2.001</td><td>3.313</td><td>MARRETA 1,00 KG SEM CABO</td><td>82052000</td><td>R$ 14,12</td><td>R$ 169,44</td><td>5.20%</td><td>CX12</td><td>9,46%</td></tr>
+            <tr><td>2.002</td><td>3.314</td><td>MARRETA 1,50 KG SEM CABO</td><td>82052000</td><td>R$ 21,32</td><td>R$ 170,58</td><td>5.20%</td><td>CX08</td><td>9,46%</td></tr>
+            <tr><td>2.003</td><td>3.315</td><td>MARRETA 2,00 KG SEM CABO</td><td>82052000</td><td>R$ 28,62</td><td>R$ 171,72</td><td>5.20%</td><td>CX06</td><td>9,46%</td></tr>
+            <tr><td>2.004</td><td>3.272</td><td>MARRETA 3,00 KG SEM CABO</td><td>82052000</td><td>R$ 42,73</td><td>R$ 213,65</td><td>5.20%</td><td>CX05</td><td>9,46%</td></tr>
+            <tr><td>2.005</td><td>3.273</td><td>MARRETA 5,00 KG SEM CABO</td><td>82052000</td><td>R$ 63,86</td><td>R$ 255,44</td><td>5.20%</td><td>CX04</td><td>9,46%</td></tr>
+            <tr><td>2.006</td><td>3.465</td><td>MARRETA 6,00 KG SEM CABO</td><td>82052000</td><td>R$ 85,27</td><td>R$ 341,08</td><td>5.20%</td><td>CX04</td><td>9,46%</td></tr>
+            <tr><td>2.007</td><td>3.274</td><td>MARRETA 8,00 KG SEM CABO</td><td>82052000</td><td>R$ 107,06</td><td>R$ 321,18</td><td>5.20%</td><td>CX03</td><td>9,46%</td></tr>
+            <tr><td>2.008</td><td>3.275</td><td>MARRETA 10,00 KG SEM CABO</td><td>82052000</td><td>R$ 134,92</td><td>R$ 269,84</td><td>5.20%</td><td>CX02</td><td>9,46%</td></tr>
+            <tr><td>2.009</td><td>3.276</td><td>MARRETA BORRACHEIRO SEM CABO</td><td>82052000</td><td>R$ 46,05</td><td>R$ 230,25</td><td>5.20%</td><td>CX05</td><td>9,46%</td></tr>
+            <tr><td>2.010</td><td>3.224</td><td>MARRETA 0,50 KG COM CABO ENCERADO</td><td>82052000</td><td>R$ 10,52</td><td>R$ 126,24</td><td>5.20%</td><td>CX12</td><td>9,46%</td></tr>
+            <tr><td>2.011</td><td>3.225</td><td>MARRETA 1,00 KG COM CABO ENCERADO</td><td>82052000</td><td>R$ 17,20</td><td>R$ 103,20</td><td>5.20%</td><td>CX06</td><td>9,46%</td></tr>
+            <tr><td>2.012</td><td>3.226</td><td>MARRETA 1,50 KG COM CABO ENCERADO</td><td>82052000</td><td>R$ 23,97</td><td>R$ 143,82</td><td>5.20%</td><td>CX06</td><td>9,46%</td></tr>
+            <tr><td>2.013</td><td>3.227</td><td>MARRETA 2,00 KG COM CABO ENCERADO</td><td>82052000</td><td>R$ 30,13</td><td>R$ 180,78</td><td>5.20%</td><td>CX06</td><td>9,46%</td></tr>
+            <tr><td>2.014</td><td>3.263</td><td>MARRETA 3,00 KG COM CABO</td><td>82052000</td><td>R$ 49,08</td><td>R$ 294,48</td><td>5.20%</td><td>CX06</td><td>9,46%</td></tr>
+            <tr><td>2.015</td><td>3.253</td><td>MARRETA 5,00 KG COM CABO</td><td>82052000</td><td>R$ 81,20</td><td>R$ 162,40</td><td>5.20%</td><td>AM02</td><td>9,46%</td></tr>
+            <tr><td>2.016</td><td>3.464</td><td>MARRETA 6,00 KG COM CABO</td><td>82052000</td><td>R$ 102,51</td><td>R$ 205,02</td><td>5.20%</td><td>AM02</td><td>9,46%</td></tr>
+            <tr><td>2.017</td><td>3.254</td><td>MARRETA 8,00 KG COM CABO</td><td>82052000</td><td>R$ 124,59</td><td>R$ 249,18</td><td>5.20%</td><td>AM02</td><td>9,46%</td></tr>
+            <tr><td>2.018</td><td>3.255</td><td>MARRETA 10,00 KG COM CABO</td><td>82052000</td><td>R$ 153,48</td><td>R$ 306,96</td><td>5.20%</td><td>AM02</td><td>9,46%</td></tr>
+            <tr><td>2.019</td><td>3.421</td><td>MARRETA BORRACHEIRO COM CABO</td><td>82052000</td><td>R$ 56,84</td><td>R$ 113,68</td><td>5.20%</td><td>AM02</td><td>9,46%</td></tr>
+
+            <!-- MARTELOS E MACHADINHA - FERRO FUNDIDO NODULAR -->
+            <tr style="background: var(--primary); color: white;"><td colspan="9" style="font-weight: 600; text-transform: uppercase;">MARTELOS E MACHADINHA - FERRO FUNDIDO NODULAR</td></tr>
+            <tr><td>3.000</td><td>3.229</td><td>MACHADINHA C/ UNHA COM CABO ENCERADO</td><td>82014000</td><td>R$ 13,60</td><td>R$ 163,20</td><td>0%</td><td>CX12</td><td>2,52%</td></tr>
+            <tr><td>3.001</td><td>3.230</td><td>MARTELO C/ 01 CORTE COM CABO ENCERADO</td><td>82052000</td><td>R$ 16,39</td><td>R$ 98,34</td><td>5,20%</td><td>CX06</td><td>9,46%</td></tr>
+            <tr><td>3.002</td><td>3.231</td><td>MARTELO C/ 02 CORTE COM CABO ENCERADO</td><td>82052000</td><td>R$ 19,33</td><td>R$ 115,98</td><td>5,20%</td><td>CX06</td><td>9,46%</td></tr>
+            <tr><td>3.003</td><td>3.232</td><td>MARTELO 23 COM CABO ENCERADO</td><td>82052000</td><td>R$ 10,89</td><td>R$ 130,68</td><td>5,20%</td><td>CX12</td><td>9,46%</td></tr>
+            <tr><td>3.004</td><td>3.233</td><td>MARTELO 25 COM CABO ENCERADO</td><td>82052000</td><td>R$ 11,09</td><td>R$ 133,08</td><td>5,20%</td><td>CX12</td><td>9,46%</td></tr>
+            <tr><td>3.005</td><td>3.234</td><td>MARTELO 27 COM CABO ENCERADO</td><td>82052000</td><td>R$ 12,13</td><td>R$ 145,56</td><td>5,20%</td><td>CX12</td><td>9,46%</td></tr>
+            <tr><td>3.006</td><td>3.235</td><td>MARTELO 29 COM CABO ENCERADO</td><td>82052000</td><td>R$ 15,35</td><td>R$ 184,20</td><td>5,20%</td><td>CX12</td><td>9,46%</td></tr>
+            <tr><td>3.007</td><td>3.623</td><td>MARTELO BOLA 300 GRAMAS COM CABO ENCERADO</td><td>82052000</td><td>R$ 10,52</td><td>R$ 126,24</td><td>5,20%</td><td>CX12</td><td>9,46%</td></tr>
+            <tr><td>3.008</td><td>3.624</td><td>MARTELO BOLA 500 GRAMAS COM CABO ENCERADO</td><td>82052000</td><td>R$ 13,27</td><td>R$ 159,24</td><td>5,20%</td><td>CX12</td><td>9,46%</td></tr>
+            <tr><td>3.009</td><td>3.625</td><td>MARTELO BOLA 800 GRAMAS COM CABO ENCERADO</td><td>82052000</td><td>R$ 20,66</td><td>R$ 247,92</td><td>5,20%</td><td>CX12</td><td>9,46%</td></tr>
+            <tr><td>3.010</td><td>4.094</td><td>MARTELO PENA 300 GRAMAS COM CABO ENCERADO</td><td>82052000</td><td>R$ 10,71</td><td>R$ 128,52</td><td>5,20%</td><td>CX12</td><td>9,46%</td></tr>
+
+            <!-- ROLDANAS PARA CONSTRUÇÃO CIVIL EM FERRO FUNDIDO CINZENTO -->
+            <tr style="background: var(--primary); color: white;"><td colspan="9" style="font-weight: 600; text-transform: uppercase;">ROLDANAS PARA CONSTRUÇÃO CIVIL EM FERRO FUNDIDO CINZENTO</td></tr>
+            <tr><td>4.000</td><td>3.346</td><td>ROLDANA N.06 - (15mm x 60mm) - Resistencia 20 kg</td><td>7326.19.00</td><td>R$ 9,52</td><td>R$ 114,24</td><td>6,50%</td><td>CX12</td><td>0,00%</td></tr>
+            <tr><td>4.001</td><td>3.347</td><td>ROLDANA N.08 - (23mm x 80mm) - Resistencia 50 kg</td><td>7326.19.00</td><td>R$ 15,17</td><td>R$ 182,04</td><td>6,50%</td><td>CX12</td><td>0,00%</td></tr>
+            <tr><td>4.002</td><td>3.321</td><td>ROLDANA N.10 - (24mm x 100mm) - Resistencia 80 kg</td><td>7326.19.00</td><td>R$ 16,89</td><td>R$ 202,68</td><td>6,50%</td><td>CX12</td><td>0,00%</td></tr>
+            <tr><td>4.003</td><td>3.322</td><td>ROLDANA N.12 - (25mm x 120mm) - Resistencia 100 kg</td><td>7326.19.00</td><td>R$ 23,36</td><td>R$ 186,88</td><td>6,50%</td><td>CX08</td><td>0,00%</td></tr>
+            <tr><td>4.004</td><td>3.323</td><td>ROLDANA N.14 - (25mm x 140mm) - Resistencia 100 kg</td><td>7326.19.00</td><td>R$ 30,95</td><td>R$ 185,70</td><td>6,50%</td><td>CX06</td><td>0,00%</td></tr>
+            <tr><td>4.005</td><td>3.333</td><td>ROLDANA N.16 - (27mm x 160mm) - Resistencia 100 kg</td><td>7326.19.00</td><td>R$ 41,14</td><td>R$ 246,84</td><td>6,50%</td><td>CX06</td><td>0,00%</td></tr>
+            <tr><td>4.006</td><td>3.334</td><td>ROLDANA N.18 - (32mm x 180mm) - Resistencia 130 kg</td><td>7326.19.00</td><td>R$ 52,61</td><td>R$ 315,66</td><td>6,50%</td><td>CX06</td><td>0,00%</td></tr>
+            <tr><td>4.007</td><td>3.335</td><td>ROLDANA N.20 - (34mm x 200mm) - Resistencia 150 kg</td><td>7326.19.00</td><td>R$ 67,12</td><td>R$ 402,72</td><td>6,50%</td><td>CX06</td><td>0,00%</td></tr>
+
+            <!-- CHAVES DE VIRAR FERRO EM FERRO FUNDIDO NODULAR -->
+            <tr style="background: var(--primary); color: white;"><td colspan="9" style="font-weight: 600; text-transform: uppercase;">CHAVES DE VIRAR FERRO EM FERRO FUNDIDO NODULAR</td></tr>
+            <tr><td>5.000</td><td>3.326</td><td>CHAVE VIRAR FERRO 3/16 - (286mm x 35mm x 8mm)</td><td>82055900</td><td>R$ 7,20</td><td>R$ 72,00</td><td>5,20%</td><td>CX10</td><td>9,46%</td></tr>
+            <tr><td>5.001</td><td>3.327</td><td>CHAVE VIRAR FERRO 1/4 - (286mm x 35mm x 8mm)</td><td>82055900</td><td>R$ 7,39</td><td>R$ 73,90</td><td>5,20%</td><td>CX10</td><td>9,46%</td></tr>
+            <tr><td>5.002</td><td>3.328</td><td>CHAVE VIRAR FERRO 5/16 - (286mm x 35mm x 9mm)</td><td>82055900</td><td>R$ 8,62</td><td>R$ 86,20</td><td>5,20%</td><td>CX10</td><td>9,46%</td></tr>
+            <tr><td>5.003</td><td>3.329</td><td>CHAVE VIRAR FERRO 3/8 - (286mm x 35mm x 10mm)</td><td>82055900</td><td>R$ 9,76</td><td>R$ 78,08</td><td>5,20%</td><td>CX08</td><td>9,46%</td></tr>
+            <tr><td>5.004</td><td>3.330</td><td>CHAVE VIRAR FERRO 1/2 - (286mm x 40mm x 16mm)</td><td>82055900</td><td>R$ 14,12</td><td>R$ 112,96</td><td>5,20%</td><td>CX08</td><td>9,46%</td></tr>
+            <tr><td>5.005</td><td>3.331</td><td>CHAVE VIRAR FERRO 5/8 - (286mm x 45mm x 16mm)</td><td>82055900</td><td>R$ 17,63</td><td>R$ 141,04</td><td>5,20%</td><td>CX08</td><td>9,46%</td></tr>
+            <tr><td>5.006</td><td>3.332</td><td>CHAVE VIRAR FERRO 3/4 - (286mm x 50mm x 20mm)</td><td>82055900</td><td>R$ 22,36</td><td>R$ 134,16</td><td>5,20%</td><td>CX06</td><td>9,46%</td></tr>
+
+            <!-- CAVADEIRAS -->
+            <tr style="background: var(--primary); color: white;"><td colspan="9" style="font-weight: 600; text-transform: uppercase;">CAVADEIRAS</td></tr>
+            <tr><td>6.000</td><td>3.290</td><td>CAVADEIRA ARTICULADA COM CABO - Cabo 1.200mm</td><td>82019000</td><td>R$ 28,42</td><td>R$ 56,84</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+            <tr><td>6.001</td><td>3.894</td><td>CAVADEIRA ARTICULADA SEM CABO</td><td>82019000</td><td>R$ 19,89</td><td>R$ 39,78</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+            <tr><td>6.002</td><td>3.895</td><td>CAVADEIRA ARTICULADA LIGHT - (1.780mmx230mmx165mm)</td><td>82019000</td><td>R$ 127,90</td><td>R$ 255,80</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+            <tr><td>6.008</td><td>3.228</td><td>CAVADEIRA RETA SEM CABO</td><td>82013000</td><td>R$ 16,58</td><td>R$ 198,96</td><td>0%</td><td>CX12</td><td>2,52%</td></tr>
+            <tr><td>6.009</td><td>3.242</td><td>CAVADEIRA RETA COM CABO - Cabo 1.200mm</td><td>82013000</td><td>R$ 30,13</td><td>R$ 60,26</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+            <tr><td>6.010</td><td>3.901</td><td>CAVADEIRA RETA MACIÇA SOQUETE 1" x 1,50</td><td>82019000</td><td>R$ 85,27</td><td>R$ 170,54</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+            <tr><td>6.011</td><td>3.902</td><td>CAVADEIRA RETA MACIÇA SOQUETE 1" x 1,80</td><td>82019000</td><td>R$ 95,89</td><td>R$ 191,78</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+            <tr><td>6.012</td><td>3.903</td><td>CAVADEIRA RETA MACIÇA SOQUETE 3/4 x 1,50</td><td>82019000</td><td>R$ 57,80</td><td>R$ 115,60</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+            <tr><td>6.013</td><td>3.904</td><td>CAVADEIRA RETA MACIÇA SOQUETE 3/4 x 1,80</td><td>82019000</td><td>R$ 65,28</td><td>R$ 130,56</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+            <tr><td>6.014</td><td>3.905</td><td>CAVADEIRA RETA MACIÇA SOQUETE 7/8 x 1,50</td><td>82019000</td><td>R$ 70,02</td><td>R$ 140,04</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+            <tr><td>6.015</td><td>3.906</td><td>CAVADEIRA RETA MACIÇA SOQUETE 7/8 x 1,80</td><td>82019000</td><td>R$ 80,36</td><td>R$ 160,72</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+            <tr><td>6.016</td><td>3.907</td><td>CAVADEIRA RETA MACIÇA SOQUETE 10/4 - FORJADA - aço 1045</td><td>82011000</td><td>R$ 46,91</td><td>R$ 281,46</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+
+            <!-- PÁ DE BICO E DESEMPENADEIRA -->
+            <tr style="background: var(--primary); color: white;"><td colspan="9" style="font-weight: 600; text-transform: uppercase;">PÁ DE BICO E DESEMPENADEIRA</td></tr>
+            <tr><td>7.001</td><td>3.908</td><td>PÁ DE BICO SEM CABO N.04 - FORJADA - aço 1045</td><td>82011000</td><td>R$ 50,60</td><td>R$ 303,60</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>7.007</td><td>3.852</td><td>PÁ DE BICO N.04 estampada aço 1020 C/CABO Y (polipropile)</td><td>82011000</td><td>R$ 28,71</td><td>R$ 172,26</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>7.008</td><td>3.854</td><td>PÁ DE BICO N.04 estampada aço 1020 COM CABO RETO</td><td>82011000</td><td>R$ 27,48</td><td>R$ 164,88</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>7.009</td><td>3.856</td><td>PÁ DE BICO N.04 estampada aço 1020 SEM CABO</td><td>82011000</td><td>R$ 22,74</td><td>R$ 136,44</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>7.002</td><td>3.236</td><td>DESEMPENADEIRA AÇO LISA - (255mm x 120mm)</td><td>82055900</td><td>R$ 9,10</td><td>R$ 109,20</td><td>0%</td><td>CX12</td><td>8,10%</td></tr>
+            <tr><td>7.003</td><td>3.237</td><td>DESEMPENADEIRA AÇO DENTADA - (255mm x 120mm)</td><td>82055900</td><td>R$ 9,95</td><td>R$ 119,40</td><td>0%</td><td>CX12</td><td>8,10%</td></tr>
+            <tr><td>7.004</td><td>3.909</td><td>FOICE COM CABO - (380mm x 175mm) - Cabo 640mm</td><td>82013000</td><td>R$ 46,62</td><td>R$ 93,24</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+            <tr><td>7.005</td><td>3.910</td><td>FOICE SEM CABO - (380mm x 175mm)</td><td>82013000</td><td>R$ 37,23</td><td>R$ 223,38</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>7.006</td><td>3.911</td><td>MACHADO SEM CABO - 3,5 - (140mm x 195mm)</td><td>82014000</td><td>R$ 53,06</td><td>R$ 318,36</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+
+            <!-- ENXADÃO EM FERRO FUNDIDO NODULAR -->
+            <tr style="background: var(--primary); color: white;"><td colspan="9" style="font-weight: 600; text-transform: uppercase;">ENXADÃO EM FERRO FUNDIDO NODULAR</td></tr>
+            <tr><td>8.006</td><td>4.078</td><td>ENXADÃO ESTREITO FUNDIDO SEM CABO (95mm x 245mm)</td><td>82013000</td><td>R$ 18,00</td><td>R$ 108,00</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>8.007</td><td>4.079</td><td>ENXADÃO ESTREITO FUNDIDO COM CABO 1.200mm</td><td>82013000</td><td>R$ 25,11</td><td>R$ 50,22</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+            <tr><td>8.008</td><td>4.080</td><td>ENXADÃO ESTREITO FUNDIDO COM CABO 1.500mm</td><td>82013000</td><td>R$ 25,96</td><td>R$ 51,92</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+
+            <!-- ALAVANCAS EM AÇO FORJADO 1020 -->
+            <tr style="background: var(--primary); color: white;"><td colspan="9" style="font-weight: 600; text-transform: uppercase;">ALAVANCAS EM AÇO FORJADO 1020</td></tr>
+            <tr><td>9.009</td><td>3.997</td><td>ALAVANCA 1 x 0,80 LISA</td><td>82014000</td><td>R$ 56,84</td><td>R$ 113,68</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+            <tr><td>9.000</td><td>3.918</td><td>ALAVANCA 1 x 1,50 LISA</td><td>82014000</td><td>R$ 81,96</td><td>R$ 163,92</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+            <tr><td>9.001</td><td>3.919</td><td>ALAVANCA 1 x 1,80 LISA</td><td>82014000</td><td>R$ 92,86</td><td>R$ 185,72</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+            <tr><td>9.006</td><td>3.920</td><td>ALAVANCA 1 x 2,00 LISA</td><td>82014000</td><td>R$ 101,10</td><td>R$ 202,20</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+            <tr><td>9.002</td><td>3.921</td><td>ALAVANCA 7/8 x 1,50 LISA</td><td>82014000</td><td>R$ 67,75</td><td>R$ 135,50</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+            <tr><td>9.003</td><td>3.922</td><td>ALAVANCA 7/8 x 1,80 LISA</td><td>82014000</td><td>R$ 76,93</td><td>R$ 153,86</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+            <tr><td>9.007</td><td>3.923</td><td>ALAVANCA 7/8 x 2,00 LISA</td><td>82014000</td><td>R$ 82,63</td><td>R$ 165,26</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+            <tr><td>9.004</td><td>3.924</td><td>ALAVANCA 3/4 x 1,50 LISA</td><td>82014000</td><td>R$ 55,81</td><td>R$ 111,62</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+            <tr><td>9.005</td><td>3.925</td><td>ALAVANCA 3/4 x 1,80 LISA</td><td>82014000</td><td>R$ 61,40</td><td>R$ 122,80</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+            <tr><td>9.008</td><td>3.926</td><td>ALAVANCA 3/4 x 2,00 LISA</td><td>82014000</td><td>R$ 66,13</td><td>R$ 132,26</td><td>0%</td><td>AM02</td><td>2,52%</td></tr>
+
+            <!-- PONTEIROS E TALHADEIRAS - NERVURADO AÇO FORJADO 1040 -->
+            <tr style="background: var(--primary); color: white;"><td colspan="9" style="font-weight: 600; text-transform: uppercase;">PONTEIROS E TALHADEIRAS - NERVURADO AÇO FORJADO 1040</td></tr>
+            <tr><td>10.000</td><td>3.927</td><td>PONTEIRO 1" x 30 NERVURADO</td><td>82014000</td><td>R$ 20,09</td><td>R$ 120,54</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>10.001</td><td>3.928</td><td>PONTEIRO 1" x 40 NERVURADO</td><td>82014000</td><td>R$ 21,98</td><td>R$ 131,88</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>10.002</td><td>3.929</td><td>PONTEIRO 3/4 x 20 NERVURADO</td><td>82014000</td><td>R$ 11,37</td><td>R$ 68,22</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>10.003</td><td>3.930</td><td>PONTEIRO 3/4 x 25 NERVURADO</td><td>82014000</td><td>R$ 12,41</td><td>R$ 74,46</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>10.004</td><td>3.931</td><td>PONTEIRO 3/4 x 30 NERVURADO</td><td>82014000</td><td>R$ 13,55</td><td>R$ 81,30</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>10.005</td><td>3.932</td><td>PONTEIRO 5/8 x 20 NERVURADO</td><td>82014000</td><td>R$ 7,86</td><td>R$ 47,16</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>10.006</td><td>3.933</td><td>PONTEIRO 5/8 x 25 NERVURADO</td><td>82014000</td><td>R$ 8,81</td><td>R$ 52,86</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>10.007</td><td>3.934</td><td>PONTEIRO 5/8 x 30 NERVURADO</td><td>82014000</td><td>R$ 9,47</td><td>R$ 56,82</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>11.000</td><td>3.935</td><td>TALHADEIRA REDONDA 1" x 30 NERVURADO</td><td>82014000</td><td>R$ 19,81</td><td>R$ 118,86</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>11.001</td><td>3.936</td><td>TALHADEIRA REDONDA 1" x 40 NERVURADO</td><td>82014000</td><td>R$ 23,30</td><td>R$ 139,80</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>11.002</td><td>3.937</td><td>TALHADEIRA REDONDA 3/4 x 20 NERVURADO</td><td>82014000</td><td>R$ 11,09</td><td>R$ 66,54</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>11.003</td><td>3.938</td><td>TALHADEIRA REDONDA 3/4 x 25 NERVURADO</td><td>82014000</td><td>R$ 12,32</td><td>R$ 73,92</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>11.004</td><td>3.939</td><td>TALHADEIRA REDONDA 3/4 x 30 NERVURADO</td><td>82014000</td><td>R$ 13,45</td><td>R$ 80,70</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>11.005</td><td>3.940</td><td>TALHADEIRA REDONDA 5/8 x 20 NERVURADO</td><td>82014000</td><td>R$ 7,58</td><td>R$ 45,48</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>11.006</td><td>3.941</td><td>TALHADEIRA REDODNA 5/8 x 25 NERVURADO</td><td>82014000</td><td>R$ 8,53</td><td>R$ 51,18</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>11.007</td><td>3.942</td><td>TALHADEIRA REDONDA 5/8 x 30 NERVURADO</td><td>82014000</td><td>R$ 9,28</td><td>R$ 55,68</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+
+            <!-- PONTEIROS E TALHADEIRAS - LISO AÇO 1020 -->
+            <tr style="background: var(--primary); color: white;"><td colspan="9" style="font-weight: 600; text-transform: uppercase;">PONTEIROS E TALHADEIRAS - LISO AÇO 1020</td></tr>
+            <tr><td>22.000</td><td>4.059</td><td>PONTEIRO 1" x 30 LISO</td><td>82014000</td><td>R$ 21,41</td><td>R$ 128,46</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>22.001</td><td>4.060</td><td>PONTEIRO 1" x 40 LISO</td><td>82014000</td><td>R$ 25,01</td><td>R$ 150,06</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>22.002</td><td>4.061</td><td>PONTEIRO 3/4 x 20 LISO</td><td>82014000</td><td>R$ 12,13</td><td>R$ 72,78</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>22.003</td><td>4.062</td><td>PONTEIRO 3/4 x 25 LISO</td><td>82014000</td><td>R$ 12,70</td><td>R$ 76,20</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>22.004</td><td>4.063</td><td>PONTEIRO 3/4 x 30 LISO</td><td>82014000</td><td>R$ 13,74</td><td>R$ 82,44</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>22.005</td><td>4.064</td><td>PONTEIRO 5/8 x 20 LISO</td><td>82014000</td><td>R$ 8,05</td><td>R$ 48,30</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>22.006</td><td>4.065</td><td>PONTEIRO 5/8 x 25 LISO</td><td>82014000</td><td>R$ 9,00</td><td>R$ 54,00</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>22.007</td><td>4.066</td><td>PONTEIRO 5/8 x 30 LISO</td><td>82014000</td><td>R$ 10,23</td><td>R$ 61,38</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>23.000</td><td>4.067</td><td>TALHADEIRA REDONDA 1" x 30 LISA</td><td>82014000</td><td>R$ 21,22</td><td>R$ 127,32</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>23.001</td><td>4.068</td><td>TALHADEIRA REDONDA 1" x 40 LISA</td><td>82014000</td><td>R$ 24,92</td><td>R$ 149,52</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>23.002</td><td>4.069</td><td>TALHADEIRA REDONDA 3/4 x 20 LISA</td><td>82014000</td><td>R$ 11,56</td><td>R$ 69,36</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>23.003</td><td>4.070</td><td>TALHADEIRA REDONDA 3/4 x 25 LISA</td><td>82014000</td><td>R$ 13,17</td><td>R$ 79,02</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>23.004</td><td>4.071</td><td>TALHADEIRA REDONDA 3/4 x 30 LISA</td><td>82014000</td><td>R$ 14,12</td><td>R$ 84,72</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>23.005</td><td>4.072</td><td>TALHADEIRA REDONDA 5/8 x 20 LISA</td><td>82014000</td><td>R$ 8,05</td><td>R$ 48,30</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>23.006</td><td>4.073</td><td>TALHADEIRA REDODNA 5/8 x 25 LISA</td><td>82014000</td><td>R$ 9,00</td><td>R$ 54,00</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>23.007</td><td>4.074</td><td>TALHADEIRA REDONDA 5/8 x 30 LISA</td><td>82014000</td><td>R$ 9,67</td><td>R$ 58,02</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+
+            <!-- PÉ DE CABRA -->
+            <tr style="background: var(--primary); color: white;"><td colspan="9" style="font-weight: 600; text-transform: uppercase;">PÉ DE CABRA</td></tr>
+            <tr><td>12.000</td><td>3.943</td><td>PÉ DE CABRA 3/4 x 60 NERVURADO</td><td>82014000</td><td>R$ 23,74</td><td>R$ 142,44</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>12.001</td><td>3.944</td><td>PÉ DE CABRA 3/4 x 70 NERVURADO</td><td>82014000</td><td>R$ 26,70</td><td>R$ 160,20</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>12.002</td><td>3.945</td><td>PÉ DE CABRA 3/4 x 80 NERVURADO</td><td>82014000</td><td>R$ 28,30</td><td>R$ 169,80</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>12.003</td><td>3.946</td><td>PÉ DE CABRA 3/4 x 60 LISO</td><td>82014000</td><td>R$ 26,07</td><td>R$ 156,42</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>12.004</td><td>3.947</td><td>PÉ DE CABRA 5/8 x 40 NERVURADO</td><td>82014000</td><td>R$ 14,95</td><td>R$ 89,70</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+            <tr><td>12.005</td><td>3.948</td><td>PÉ DE CABRA 5/8 x 50 NERVURADO</td><td>82014000</td><td>R$ 16,29</td><td>R$ 97,74</td><td>0%</td><td>AM06</td><td>2,52%</td></tr>
+
+            <!-- PEÇAS PARA ESCORAMENTO E ANDAIMES -->
+            <tr style="background: var(--primary); color: white;"><td colspan="9" style="font-weight: 600; text-transform: uppercase;">PEÇAS PARA ESCORAMENTO E ANDAIMES</td></tr>
+            <tr><td>13.000</td><td>3.636</td><td>PORCA DE ANCORAGEM 5/8" - 75mm</td><td>73084000</td><td>R$ 6,13</td><td>R$ 306,50</td><td>0%</td><td>SC50</td><td>9,90%</td></tr>
+            <tr><td>13.009</td><td>4.091</td><td>PORCA DE ANCORAGEM 1/2" - 75mm</td><td>73084000</td><td>R$ 7,69</td><td>R$ 384,50</td><td>0%</td><td>SC50</td><td>9,90%</td></tr>
+            <tr><td>13.007</td><td>3.499</td><td>PORCA DE ANCORAGEM 5/8" GRANDE - 100mm</td><td>73084000</td><td>R$ 12,23</td><td>R$ 366,90</td><td>0%</td><td>SC30</td><td>9,90%</td></tr>
+            <tr><td>13.008</td><td>3.573</td><td>PORCA DE ANCORAGEM 3/4" GRANDE - 100mm</td><td>73084000</td><td>R$ 16,68</td><td>R$ 417,00</td><td>0%</td><td>SC25</td><td>9,90%</td></tr>
+            <tr><td>13.001</td><td>3.414</td><td>LUVA DE VEDAÇÃO 5/8"</td><td>73084000</td><td>R$ 6,13</td><td>R$ 306,50</td><td>0%</td><td>SC50</td><td>9,90%</td></tr>
+            <tr><td>13.005</td><td>3.689</td><td>LUVA DE VEDAÇÃO 3/4"</td><td>73084000</td><td>R$ 6,13</td><td>R$ 306,50</td><td>0%</td><td>SC50</td><td>9,90%</td></tr>
+            <tr><td>13.006</td><td>3.413</td><td>MEIA LUVA DE VEDAÇÃO 5/8"</td><td>73084000</td><td>R$ 4,28</td><td>R$ 214,00</td><td>0%</td><td>SC50</td><td>9,90%</td></tr>
+            <tr><td>13.002</td><td>3.416</td><td>PORCA BORBOLETA 1 1/4" NORMAL - 4 FIOS</td><td>73084000</td><td>R$ 8,89</td><td>R$ 266,70</td><td>0%</td><td>SC30</td><td>9,90%</td></tr>
+            <tr><td>13.004</td><td>3.634</td><td>PORCA BORBOLETA 1 1/4" ROSCA TUBO - 5 FIOS</td><td>73084000</td><td>R$ 8,89</td><td>R$ 266,70</td><td>0%</td><td>SC30</td><td>9,90%</td></tr>
+            <tr><td>13.010</td><td>3.433</td><td>PORCA BORBOLETA 1 1/4" MODELO S</td><td>73084000</td><td>R$ 8,89</td><td>R$ 266,70</td><td>0%</td><td>SC30</td><td>9,90%</td></tr>
+            <tr><td>13.003</td><td>3.479</td><td>TENSOR DE FORMA</td><td>73084000</td><td>R$ 8,69</td><td>R$ 434,50</td><td>0%</td><td>SC50</td><td>9,90%</td></tr>
+
+            <!-- BIGORNA -->
+            <tr style="background: var(--primary); color: white;"><td colspan="9" style="font-weight: 600; text-transform: uppercase;">BIGORNA</td></tr>
+            <tr><td>14.000</td><td>3.466</td><td>BIGORNA N.10 (PESO APROXIMADO DE 10,00 KG)</td><td>82058000</td><td>R$ 257,72</td><td>R$ 257,72</td><td>5.20%</td><td>Avulso</td><td>9,46%</td></tr>
+            <tr><td>14.001</td><td>3.467</td><td>BIGORNA N.20 (PESO APROXIMADO DE 20,00 KG)</td><td>82058000</td><td>R$ 363,85</td><td>R$ 363,85</td><td>5.20%</td><td>Avulso</td><td>9,46%</td></tr>
+            <tr><td>14.002</td><td>3.468</td><td>BIGORNA N.30 (PESO APROXIMADO DE 30,00 KG)</td><td>82058000</td><td>R$ 511,65</td><td>R$ 511,65</td><td>5.20%</td><td>Avulso</td><td>9,46%</td></tr>
+            <tr><td>14.003</td><td>3.469</td><td>BIGORNA N.40 (PESO APROXIMADO DE 40,00 KG)</td><td>82058000</td><td>R$ 687,87</td><td>R$ 687,87</td><td>5.20%</td><td>Avulso</td><td>9,46%</td></tr>
+            <tr><td>14.004</td><td>3.471</td><td>BIGORNA N.60 (PESO APROXIMADO DE 60,00 KG)</td><td>82058000</td><td>R$ 1.012,11</td><td>R$ 1.012,11</td><td>5.20%</td><td>Avulso</td><td>9,46%</td></tr>
+
+            <!-- CABOS DE MADEIRA -->
+            <tr style="background: var(--primary); color: white;"><td colspan="9" style="font-weight: 600; text-transform: uppercase;">CABOS DE MADEIRA</td></tr>
+            <tr><td>15.000</td><td>3.949</td><td>CABO MARRETA 1/2 KG - ENCERADO</td><td>44170010</td><td>R$ 3,03</td><td>R$ 36,36</td><td>0%</td><td>AM12</td><td>8,10%</td></tr>
+            <tr><td>15.001</td><td>3.950</td><td>CABO MARRETA 1,00 KG/1,50 KG/2,00 KG - ENCERADO</td><td>44170010</td><td>R$ 3,03</td><td>R$ 36,36</td><td>0%</td><td>AM12</td><td>8,10%</td></tr>
+            <tr><td>15.002</td><td>3.951</td><td>CABO MARRETA 3,00 KG - (385 mm)</td><td>44170010</td><td>R$ 3,88</td><td>R$ 46,56</td><td>0%</td><td>AM12</td><td>8,10%</td></tr>
+            <tr><td>15.003</td><td>3.952</td><td>CABO MARRETA 5,00 KG/ 6,00 KG - (800 mm)</td><td>44170010</td><td>R$ 6,63</td><td>R$ 79,56</td><td>0%</td><td>AM12</td><td>8,10%</td></tr>
+            <tr><td>15.004</td><td>3.953</td><td>CABO MARRETA 8,00 KG/10,00 KG/Borracheiro - (800mm)</td><td>44170010</td><td>R$ 6,63</td><td>R$ 79,56</td><td>0%</td><td>AM12</td><td>8,10%</td></tr>
+            <tr><td>15.005</td><td>3.954</td><td>CABO MARTELO 23 - BOLA 300 g ENCERADO</td><td>44170010</td><td>R$ 3,41</td><td>R$ 40,92</td><td>0%</td><td>AM12</td><td>8,10%</td></tr>
+            <tr><td>15.006</td><td>3.955</td><td>CABO MARTELO 25 e 27 - BOLA 500 g e 800 g ENCERADO</td><td>44170010</td><td>R$ 3,41</td><td>R$ 40,92</td><td>0%</td><td>AM12</td><td>8,10%</td></tr>
+            <tr><td>15.007</td><td>3.956</td><td>CABO MARTELO 29 - ENCERADO</td><td>44170010</td><td>R$ 3,41</td><td>R$ 40,92</td><td>0%</td><td>AM12</td><td>8,10%</td></tr>
+            <tr><td>15.008</td><td>3.957</td><td>CABO MARTELO 1 CORTE E 2 CORTE - ENCERADO</td><td>44170010</td><td>R$ 3,41</td><td>R$ 40,92</td><td>0%</td><td>AM12</td><td>8,10%</td></tr>
+            <tr><td>15.009</td><td>3.958</td><td>CABO MACHADINHA - ENCERADO</td><td>44170010</td><td>R$ 3,41</td><td>R$ 40,92</td><td>0%</td><td>AM12</td><td>8,10%</td></tr>
+            <tr><td>15.010</td><td>3.959</td><td>CABO PICARETA/CHIBANCA/ALVIÃO ENCERADO</td><td>44170010</td><td>R$ 12,27</td><td>R$ 73,62</td><td>0%</td><td>AM06</td><td>8,10%</td></tr>
+            <tr><td>15.011</td><td>3.960</td><td>CABO RETO PÁ / CAVADEIRA RETA / FOICE - (1.200 mm)</td><td>44170010</td><td>R$ 6,63</td><td>R$ 79,56</td><td>0%</td><td>AM12</td><td>8,10%</td></tr>
+            <tr><td>15.012</td><td>3.961</td><td>CABO RETO PARA ENXADA E ENXADÃO - (1.200 mm)</td><td>44170010</td><td>R$ 6,25</td><td>R$ 75,00</td><td>0%</td><td>AM12</td><td>8,10%</td></tr>
+            <tr><td>15.013</td><td>3.962</td><td>CABO RETO PARA ENXADA E ENXADÃO - (1.500 mm)</td><td>44170010</td><td>R$ 7,11</td><td>R$ 85,32</td><td>0%</td><td>AM12</td><td>8,10%</td></tr>
+            <tr><td>15.014</td><td>3.963</td><td>CABO Y PARA PÁ (760mm)</td><td>44170010</td><td>R$ 8,33</td><td>R$ 99,96</td><td>0%</td><td>AM12</td><td>8,10%</td></tr>
+            <tr><td>15.015</td><td>3.964</td><td>CABO PARA MACHADO - (975 mm)</td><td>44170010</td><td>R$ 9,85</td><td>R$ 118,20</td><td>0%</td><td>AM12</td><td>8,10%</td></tr>
+            <tr><td>15.016</td><td>3.965</td><td>CABO PARA ANCINHO - (1.500 mm)</td><td>44170010</td><td>R$ 5,69</td><td>R$ 68,28</td><td>0%</td><td>AM12</td><td>8,10%</td></tr>
+            <tr><td>15.017</td><td>4.000</td><td>CABO CAVADEIRA ARTICULADA (1.200mm x 32mm)</td><td>44170010</td><td>R$ 6,25</td><td>R$ 75,00</td><td>0%</td><td>AM12</td><td>8,10%</td></tr>
+
+            <!-- COLHER DE PEDREIRO -->
+            <tr style="background: var(--primary); color: white;"><td colspan="9" style="font-weight: 600; text-transform: uppercase;">COLHER DE PEDREIRO (MATERIAL AÇO)</td></tr>
+            <tr><td>16.004</td><td>4.001</td><td>COLHER DE PEDREIRO CANTO RETO 6" - SOLDADA</td><td>82055900</td><td>R$ 8,53</td><td>R$ 51,18</td><td>0%</td><td>CX06</td><td>8,10%</td></tr>
+            <tr><td>16.000</td><td>3.966</td><td>COLHER DE PEDREIRO CANTO RETO 7" - SOLDADA</td><td>82055900</td><td>R$ 8,81</td><td>R$ 52,86</td><td>0%</td><td>CX06</td><td>8,10%</td></tr>
+            <tr><td>16.001</td><td>3.967</td><td>COLHER DE PEDREIRO CANTO RETO 8" - SOLDADA</td><td>82055900</td><td>R$ 9,67</td><td>R$ 58,02</td><td>0%</td><td>CX06</td><td>8,10%</td></tr>
+            <tr><td>16.002</td><td>3.968</td><td>COLHER DE PEDREIRO CANTO RETO 9" - SOLDADA</td><td>82055900</td><td>R$ 10,71</td><td>R$ 64,26</td><td>0%</td><td>CX06</td><td>8,10%</td></tr>
+            <tr><td>16.003</td><td>3.969</td><td>COLHER DE PEDREIRO CANTO RETO 10" - SOLDADA</td><td>82055900</td><td>R$ 11,84</td><td>R$ 71,04</td><td>0%</td><td>CX06</td><td>8,10%</td></tr>
+
+            <!-- ANCINHO SEM CABO -->
+            <tr style="background: var(--primary); color: white;"><td colspan="9" style="font-weight: 600; text-transform: uppercase;">ANCINHO SEM CABO (CHAPA DE AÇO)</td></tr>
+            <tr><td>21.004</td><td>3.975</td><td>ANCINHO 10 DENTES SEM CABO (280mm x 40mm)</td><td>82013000</td><td>R$ 3,82</td><td>R$ 22,92</td><td>0%</td><td>CX06</td><td>2,52%</td></tr>
+            <tr><td>21.005</td><td>3.976</td><td>ANCINHO 12 DENTES SEM CABO (320mm x 40mm)</td><td>82013000</td><td>R$ 4,27</td><td>R$ 25,62</td><td>0%</td><td>CX06</td><td>2,52%</td></tr>
+            <tr><td>21.000</td><td>3.977</td><td>ANCINHO 14 DENTES SEM CABO (370mm x 40mm)</td><td>82013000</td><td>R$ 6,55</td><td>R$ 39,30</td><td>0%</td><td>CX06</td><td>2,52%</td></tr>
+            <tr><td>21.001</td><td>3.978</td><td>ANCINHO 16 DENTES SEM CABO (420mm x 40mm)</td><td>82013000</td><td>R$ 6,80</td><td>R$ 40,80</td><td>0%</td><td>CX06</td><td>2,52%</td></tr>
+            <tr><td>21.002</td><td>3.979</td><td>ANCINHO 18 DENTES SEM CABO (480mm x 40mm)</td><td>82013000</td><td>R$ 7,28</td><td>R$ 43,68</td><td>0%</td><td>CX06</td><td>2,52%</td></tr>
+            <tr><td>21.003</td><td>3.980</td><td>ANCINHO 20 DENTES SEM CABO (530mm x 40mm)</td><td>82013000</td><td>R$ 7,87</td><td>R$ 47,22</td><td>0%</td><td>CX06</td><td>2,52%</td></tr>
+
+            <!-- EXPOSITOR TENACE -->
+            <tr style="background: var(--primary); color: white;"><td colspan="9" style="font-weight: 600; text-transform: uppercase;">EXPOSITOR TENACE</td></tr>
+            <tr><td>24.000</td><td>4.122</td><td>EXPOSITOR TENACE</td><td>94032090</td><td>R$ 258,78</td><td>R$ 258,78</td><td>3,25%</td><td>Avulso</td><td>0,00%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const themeToggle = document.getElementById("themeToggle");
+    const themeIcon = themeToggle.querySelector(".theme-icon");
+    const printBtn = document.getElementById("printBtn");
+
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    function applyTheme(isDark) {
+      if (isDark) {
+        document.documentElement.setAttribute("data-theme", "dark");
+        themeIcon.innerHTML = "&#9728;";
+      } else {
+        document.documentElement.removeAttribute("data-theme");
+        themeIcon.innerHTML = "&#9790;";
+      }
+    }
+
+    applyTheme(savedTheme === "dark" || (!savedTheme && prefersDark));
+
+    themeToggle.addEventListener("click", () => {
+      const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+      const newTheme = isDark ? "light" : "dark";
+      localStorage.setItem("theme", newTheme);
+      applyTheme(newTheme === "dark");
+    });
+
+    printBtn.addEventListener("click", () => {
+      window.print();
+    });
+  </script>
+</body>
+</html>
