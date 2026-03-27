@@ -2030,7 +2030,7 @@
     // Carrega produtos do JSON
     async function carregarProdutos() {
       try {
-        const response = await fetch('data/produtos.json?v=' + Date.now());
+        const response = await fetch('data/produtosWithDiscount.json?v=' + Date.now());
         const data = await response.json();
         produtosData = data.produtos;
       } catch (error) {

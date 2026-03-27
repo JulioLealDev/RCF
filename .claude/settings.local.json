@@ -9,7 +9,24 @@
       "Bash(git push:*)",
       "Bash(git mv:*)",
       "Bash(git commit -m \"$\\(cat <<''EOF''\nRenomear main.html para index.html\n\nPermite acesso direto via GitHub Pages sem especificar o arquivo\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(node:*)",
+      "Bash(git -C D:/Projetos/RCF status)",
+      "Bash(git -C D:/Projetos/RCF diff data/produtos.json)",
+      "Bash(git -C D:/Projetos/RCF log --oneline -5)",
+      "Bash(git -C D:/Projetos/RCF add data/produtos.json)",
+      "Bash(git -C D:/Projetos/RCF commit -m \"$\\(cat <<''EOF''\nReajustar preços: Roldanas +15%, demais +10%\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git -C D:/Projetos/RCF push)",
+      "Bash(git -C D:/Projetos/RCF log --oneline -3)",
+      "Bash(git -C D:/Projetos/RCF add tabela.html)",
+      "Bash(git -C D:/Projetos/RCF commit -m \"$\\(cat <<''EOF''\nAdicionar página de tabela de preços Tenace\n\n- 172 produtos organizados em 19 categorias\n- Layout responsivo com suporte a tema claro/escuro\n- CSS otimizado para impressão\n- Título estilizado com gradiente\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git -C D:/Projetos/RCF diff data/produtosWithDiscount.json --stat)",
+      "Bash(git -C D:/Projetos/RCF add data/produtosWithDiscount.json)",
+      "Bash(git -C D:/Projetos/RCF commit -m \"$\\(cat <<''EOF''\nAplicar redução de 18,775% nos preços\n\nRedução aplicada em precoUnidade e precoEmbalagem de todos os 206 produtos\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git -C D:/Projetos/RCF commit -m \"$\\(cat <<''EOF''\nSincronizar preços do tabela.html com produtosWithDiscount.json\n\n- 182 produtos atualizados com preços corrigidos\n- Todas as 8 roldanas com preços atualizados\n- 206 produtos agora com preços idênticos ao JSON\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git -C D:/Projetos/RCF diff --stat)",
+      "Bash(git -C D:/Projetos/RCF add -A)",
+      "Bash(git -C D:/Projetos/RCF commit -m \"$\\(cat <<''EOF''\nAtualizar projeto e remover arquivos obsoletos\n\n- Remover RCF.pdf e data/produtos.json \\(obsoletos\\)\n- Adicionar data/produtosRawPrice.json \\(preços originais\\)\n- Atualizar index.html e tabela.html\n- Atualizar configurações locais\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
     ]
   }
 }
