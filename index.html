@@ -1943,7 +1943,12 @@
       try {
         const response = await fetch('data/empresas.json?v=' + Date.now());
         const data = await response.json();
-        empresasData = data.empresas;
+        
+        empresasData = data.empresas.sort((a, b) => {
+        return a.razaoSocial.localeCompare(b.razaoSocial, 'pt-BR', {
+          sensitivity: 'base'
+        });
+      });
 
         // Popula o dropdown com as empresas
         empresasData.forEach(empresa => {
