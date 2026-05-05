@@ -576,7 +576,6 @@
     .total-final {
       margin-top: 4px;
       padding-top: 8px;
-      border-top: 1px dashed var(--border);
     }
 
     /* Seção de entrega */
@@ -1140,7 +1139,6 @@
       .total-final {
         margin-top: 1px;
         padding-top: 2px;
-        border-top: 1px dashed #999;
       }
 
       /* Seção entrega e pagamento */
@@ -1157,7 +1155,7 @@
       .delivery-grid {
         gap: 6px;
         display: grid !important;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         grid-template-rows: auto auto;
         align-items: center;
         padding: 0 8px 0 0;
@@ -1218,6 +1216,13 @@
 
       #descontoInfo.desconto-ativo {
         display: flex !important;
+        align-items: center;
+        font-size: 8px;
+        font-weight: 600;
+        white-space: nowrap;
+        color: #1e293b;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
       }
     }
   </style>
@@ -1509,10 +1514,7 @@
             <span>Conceder 5%</span>
           </label>
         </div>
-        <div class="form-group" id="descontoInfo">
-          <label>Desconto</label>
-          <input type="text" value="5%" readonly />
-        </div>
+        <div id="descontoInfo">DESCONTO: 5%</div>
         <div class="form-group">
           <label>Pagamento</label>
           <input id="pagto" type="text" placeholder="Forma de pagamento" />
