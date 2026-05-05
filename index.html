@@ -1642,14 +1642,6 @@
       let sum = 0;
       const desconto5Checkbox = document.getElementById('desconto5');
       const descontoAtivo = desconto5Checkbox && desconto5Checkbox.checked;
-      const container = document.querySelector('.container');
-
-      // Adiciona ou remove classe para mostrar/esconder coluna de desconto
-      if (descontoAtivo) {
-        container.classList.add('desconto-ativo');
-      } else {
-        container.classList.remove('desconto-ativo');
-      }
 
       [...tbody.querySelectorAll('tr')].forEach(tr => {
         // Pega o valor da embalagem selecionada
@@ -1676,19 +1668,9 @@
           total = qtde * pr;
         }
 
-        tr.querySelector('[data-col="total"]').value = brMoney(total);
-
-        // Calcula e exibe o desconto e preço final do produto
-        const descPctInput = tr.querySelector('[data-col="desc-pct"]');
-        const prFinalInput = tr.querySelector('[data-col="pr-final"]');
-        if (descontoAtivo && total > 0) {
-          const precoFinal = total * 0.95; // total - 5%
-          descPctInput.value = '5%';
-          prFinalInput.value = brMoney(precoFinal);
-        } else {
-          descPctInput.value = '';
-          prFinalInput.value = '';
-        }
+        // Exibe total já com desconto na coluna existente
+        const displayTotal = (descontoAtivo && total > 0) ? total * 0.95 : total;
+        tr.querySelector('[data-col="total"]').value = brMoney(displayTotal);
 
         sum += total;
       });
