@@ -52,7 +52,7 @@
       "inscricaoEstadual": "062128256.0009",
       "endereco": "AV. AMINTHAS JACQUES MORAES, 768",
       "bairro": "COQUEIROS",
-      "cep": "",
+      "cep": "30881-202",
       "cidade": "BELO HORIZONTE",
       "uf": "MG",
       "telefone": "",
@@ -347,21 +347,6 @@
     },
     {
       "id": 24,
-      "razaoSocial": "BH FIOS E CABOS",
-      "cnpj": "04.448.407/0001-33",
-      "inscricaoEstadual": "062128256.0009",
-      "endereco": "AV. AMINTHAS JACQUES MORAES, 768",
-      "bairro": "COQUEIROS",
-      "cep": "30881-202",
-      "cidade": "BELO HORIZONTE",
-      "uf": "MG",
-      "telefone": "(31) 3653-5028",
-      "email": "bhfios@hotmail.com",
-      "comprador": "THIAGO",
-      "fornecedor": "TENASTEEL INDUSTRIA E COMÉRCIO LTDA"
-    },
-    {
-      "id": 25,
       "razaoSocial": "COMERCIAL M. SANTOS LTDA",
       "cnpj": "64.225.550/0001-91",
       "inscricaoEstadual": "062668903.0031",
@@ -376,7 +361,7 @@
       "fornecedor": "TENASTEEL INDUSTRIA E COMÉRCIO LTDA"
     },
     {
-      "id": 26,
+      "id": 25,
       "razaoSocial": "DISTRIBUIDORA LJ RODRIGUES",
       "cnpj": "10.451.702/0001-",
       "inscricaoEstadual": "",
@@ -391,7 +376,7 @@
       "fornecedor": "MASTER PREGOS TELHEIROS"
     },
     {
-      "id": 27,
+      "id": 26,
       "razaoSocial": "REIS C. DISTRIBUIDORA",
       "cnpj": "12.252.072/0001-01",
       "inscricaoEstadual": "0019350680068",
