@@ -489,6 +489,8 @@
       font-size: 14px;
     }
 
+    #descontoInfo { display: none; }
+
     /* Botão de tema */
     .btn-theme {
       width: 38px;
@@ -1213,6 +1215,10 @@
       .radio-option span {
         font-size: 8px;
       }
+
+      #descontoInfo.desconto-ativo {
+        display: flex !important;
+      }
     }
   </style>
 </head>
@@ -1464,16 +1470,8 @@
 
       <div class="total-bar">
         <div class="total-items">
-          <div class="total-row" id="subtotalRow" style="display: none;">
-            <span class="total-label-sm">Total:</span>
-            <span class="total-value-sm">R$ <span id="subtotal">0,00</span></span>
-          </div>
-          <div class="total-row" id="descontoRow" style="display: none;">
-            <span class="total-label-sm desconto">Desconto:</span>
-            <span class="total-value-sm desconto">R$ <span id="descontoValor">0,00</span> <span id="descontoPct">(5%)</span></span>
-          </div>
           <div class="total-row total-final">
-            <span class="total-label">Total Geral:</span>
+            <span class="total-label">Total:</span>
             <span class="total-value">R$ <span id="grandTotal">0,00</span></span>
           </div>
         </div>
@@ -1510,6 +1508,10 @@
             <input type="checkbox" id="desconto5" />
             <span>Conceder 5%</span>
           </label>
+        </div>
+        <div class="form-group" id="descontoInfo">
+          <label>Desconto</label>
+          <input type="text" value="5%" readonly />
         </div>
         <div class="form-group">
           <label>Pagamento</label>
@@ -1643,6 +1645,8 @@
       const desconto5Checkbox = document.getElementById('desconto5');
       const descontoAtivo = desconto5Checkbox && desconto5Checkbox.checked;
 
+      document.getElementById('descontoInfo').classList.toggle('desconto-ativo', descontoAtivo);
+
       [...tbody.querySelectorAll('tr')].forEach(tr => {
         // Pega o valor da embalagem selecionada
         const embSelect = tr.querySelector('[data-col="und"]');
@@ -1675,27 +1679,8 @@
         sum += total;
       });
 
-      // Verifica se há desconto
-      const subtotalRow = document.getElementById('subtotalRow');
-      const descontoRow = document.getElementById('descontoRow');
-      const subtotalEl = document.getElementById('subtotal');
-      const descontoValorEl = document.getElementById('descontoValor');
-
-      if (descontoAtivo && sum > 0) {
-        const desconto = sum * 0.05;
-        const totalFinal = sum - desconto;
-
-        subtotalEl.textContent = brMoney(sum);
-        descontoValorEl.textContent = brMoney(desconto);
-        grandTotalEl.textContent = brMoney(totalFinal);
-
-        subtotalRow.style.display = 'flex';
-        descontoRow.style.display = 'flex';
-      } else {
-        grandTotalEl.textContent = brMoney(sum);
-        subtotalRow.style.display = 'none';
-        descontoRow.style.display = 'none';
-      }
+      const displaySum = (descontoAtivo && sum > 0) ? sum * 0.95 : sum;
+      grandTotalEl.textContent = brMoney(displaySum);
     }
 
     function makeRow(itemNumber, produto = null) {
