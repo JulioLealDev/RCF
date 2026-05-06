@@ -1668,7 +1668,12 @@
         }
 
         // Exibe total já com desconto na coluna existente
+        const displayPrConj = (descontoAtivo && prConj > 0) ? prConj * 0.95 : prConj;
+        const displayPr = (descontoAtivo && pr > 0) ? pr * 0.95 : pr;
         const displayTotal = (descontoAtivo && total > 0) ? total * 0.95 : total;
+
+        tr.querySelector('[data-col="pr-conj"]').value = prConj > 0 ? brMoney(displayPrConj) : '';
+        tr.querySelector('[data-col="pr"]').value = pr > 0 ? brMoney(displayPr) : '';
         tr.querySelector('[data-col="total"]').value = brMoney(displayTotal);
 
         sum += total;
@@ -1740,6 +1745,23 @@
       // Event listeners para inputs (exceto campos de preço que têm lógica especial)
       const prInput = tr.querySelector('[data-col="pr"]'); // Pr. Und.
       const prConjInput = tr.querySelector('[data-col="pr-conj"]'); // Pr. Emb.
+
+      if (!prConjInput.dataset.original) {
+        prConjInput.dataset.original = prConjInput.value;
+      }
+
+      if (!prInput.dataset.original) {
+        prInput.dataset.original = prInput.value;
+      }
+
+      const prConjOriginal = parseMoney(prConjInput.dataset.original);
+      const prOriginal = parseMoney(prInput.dataset.original);
+
+      const displayPrConj = descontoAtivo ? prConjOriginal * 0.95 : prConjOriginal;
+      const displayPr = descontoAtivo ? prOriginal * 0.95 : prOriginal;
+
+      prConjInput.value = prConjOriginal > 0 ? brMoney(displayPrConj) : '';
+      prInput.value = prOriginal > 0 ? brMoney(displayPr) : '';
 
       tr.querySelectorAll('input').forEach(inp => {
         // Campos de preço têm listeners próprios
